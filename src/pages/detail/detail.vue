@@ -435,6 +435,8 @@ export default {
   >>>img
     max-width 100%
     vertical-align bottom
+  >>>video
+    max-width 100%
 .searchtab
   height 90px
   padding 0 34px

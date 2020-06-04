@@ -91,7 +91,7 @@
         <div class="layui-upload-list alltu" id="lblimglist"></div>
       </div>
       <div class="btmCon row j-c a-c" @click="myRecall">
-        <div class="btm row j-c a-c"  v-if="showBtn">提交</div>
+        <div class="btm row j-c a-c" v-if="showBtn">提交</div>
       </div>
       <div class="bar"></div>
     </div>
@@ -421,10 +421,10 @@ export default {
         }).then(res => {
           console.log('编辑', res)
           if (res.code == 0) {
-            // this.$router.push({
-            //   path: './myRecall'
-            // })
             Toast('编辑成功');
+            setTimeout(() => {
+              this.$router.go(-1)
+            }, "1000");
           } else {
             Toast('编辑失败，请重试');
 
@@ -461,10 +461,10 @@ export default {
           console.log('编辑', res)
           console.log('编辑', this.firstAge)
           if (res.code == 0) {
-            // this.$router.push({
-            //   path: './myRecall'
-            // })
             Toast('编辑成功');
+            setTimeout(() => {
+              this.$router.go(-1)
+            }, "1000");
           } else {
             Toast('编辑失败，请重试');
 

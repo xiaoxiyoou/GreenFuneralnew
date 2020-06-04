@@ -52,12 +52,12 @@
           <div class="imgList">
             <ul class="left-waterfall" ref="left">
               <li class="item" v-for="(item,index) in leftItems" :key="index">
-                <img :src="item" alt=""  @click="imgPrew(item)">
+                <img :src="item" alt="" @click="imgPrew(item)">
               </li>
             </ul>
             <ul class="right-waterfall" ref="right">
               <li class="item" v-for="(item,index) in rightItems" :key="index">
-                <img :src="item" alt=""  @click="imgPrew(item)">
+                <img :src="item" alt="" @click="imgPrew(item)">
               </li>
             </ul>
           </div>
@@ -258,7 +258,6 @@
     <!-- 花 -->
     <van-popup v-model="flower" position="bottom" class="flowerWrapper col a-c" :close-on-click-overlay="false" closeable @closed="closed()">
       <div class="title">献花</div>
-      <!-- <div class="close" @click="flowerShow(false)">关闭</div> -->
       <div class="content row j-b f-w">
         <div class="item col a-c j-c" v-for="(item, index) in flowerCon" :key="index" @click="flowerSlecet(index)" :class="{ active: isActive == index }">
           <img class="" :src="item.imgurl" alt="" />
@@ -267,10 +266,11 @@
       </div>
 
       <div class="flowerbtn row j-b">
-        <div class="row item">
+        <div class="row item" v-if="flowerCon[0].isbuy != 0">
           <div class="money">收费 :</div>
-          <div class="num"><span>￥</span>2</div>
+          <div class="num"><span>￥</span>{{flowerCon[0].price}}</div>
         </div>
+        <div v-else>免费</div>
         <div class="row item">
           <div class="preview row j-c a-c" @click="preview">预览</div>
           <div class="send row j-c a-c" @click="sendflower()">送出</div>
@@ -303,7 +303,6 @@
     <!-- 献礼 -->
     <van-popup v-model="tribute" position="bottom" class="flowerWrapper col a-c" :close-on-click-overlay="false" closeable @closed="closed()">
       <div class="title">献礼</div>
-      <!-- <div class="close" @click="tributeShow(false)">关闭</div> -->
       <div class="content row j-b f-w">
         <div class="item col a-c j-c" v-for="(item, index) in proCon" :key="index" @click="proSlecet(index)" :class="{ active: ispro == index }">
           <img class="" :src="item.imgurl" alt="" />
@@ -311,10 +310,11 @@
         </div>
       </div>
       <div class="flowerbtn row j-b">
-        <div class="row item">
+        <div class="row item" v-if="proCon[0].isbuy != 0">
           <div class="money">收费 :</div>
-          <div class="num"><span>￥</span>2</div>
+          <div class="num"><span>￥</span>{{proCon[0].price}}</div>
         </div>
+        <div v-else>免费</div>
         <div class="row item">
           <div class="preview row j-c a-c" @click="previewPro">预览</div>
           <div class="send row j-c a-c" @click="sendtribute(false)">送出</div>
@@ -365,7 +365,7 @@ import Music from 'components/Music/Music'
 var wx = require('weixin-js-sdk')
 import { msglist, sharemsg, shareCard, msgreply, msgdel, msgadd, view, prolist, giveflower, getip, opera } from 'api/index'
 import axios from 'axios'
-import { Toast,ImagePreview } from 'vant'
+import { Toast, ImagePreview } from 'vant'
 export default {
   data() {
     return {
@@ -614,18 +614,18 @@ export default {
     },
   },
   methods: {
-      // 图片预览
+    // 图片预览
     imgPrew(flag) {
       ImagePreview({
         images: [flag],
         closeable: true,
-        showIndex:false
+        showIndex: false
       });
     },
     // 分享
 
-    wxShare() {
-      let link = 'http://b.fuyulove.com/wisdom/#' + localStorage.getItem('fromUrl')
+    wxShare(id) {
+      let link = 'http://b.fuyulove.com/wisdom/#/show?carid=' + id
       axios.get('http://b.fuyulove.com/Action/CacheData.aspx?action=jssdk', {
         params: {
           url: location.href.split('#')[0],
@@ -934,10 +934,10 @@ export default {
 
       })
     },
-      // 获取留言
+    // 获取留言
     _msglist(carid) {
       msglist({
-        action:"msglist",
+        action: "msglist",
         carid: carid
       }).then(res => {
         console.log('获取留言', res);
@@ -1023,7 +1023,7 @@ export default {
           this._msglist(this.carid)
           this._getip(this.carid)
           this._sharemsg(this.carid)
-          this.wxShare()
+          this.wxShare(this.carid)
 
         } else if (res.code == 1) {
           this.$router.push({
@@ -1873,11 +1873,11 @@ export default {
   font-size: 27px;
   margin-left: 20px;
 }
-.shop-wrapper > .content > .shopimgCon{
+.shop-wrapper > .content > .shopimgCon {
   width: 150px;
   height: 150px;
 }
-.shop-wrapper > .content > .shopimgCon>.shopimg {
+.shop-wrapper > .content > .shopimgCon > .shopimg {
   width: 150px;
   height: 150px;
   border-radius: 10px;

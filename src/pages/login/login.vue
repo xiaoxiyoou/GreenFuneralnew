@@ -28,7 +28,7 @@ export default {
       if (uid === '' || uid === undefined || uid === null) {
         this.GetCode(this.sid)
       } else {
-        this.GetOpenId(uid, this.sid) 
+        this.GetOpenId(uid, this.sid)
       }
     },
 

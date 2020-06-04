@@ -64,7 +64,10 @@ export default {
   },
   methods: {
     flowerSlecet(flag) {
-      Toast('邀请卡生成中');
+      Toast.loading({
+        forbidClick: true,
+        duration: 0, // 持续展示 toast
+      });
       this.isActive = flag
       setTimeout(() => {
         this.createImg()

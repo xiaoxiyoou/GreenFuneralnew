@@ -81,7 +81,6 @@ export default {
       this.defalutindex = index;
       this._listbycate(cateid)
       Toast.loading({
-        message: '加载中...',
         forbidClick: true,
         duration: 0, // 持续展示 toast
       });

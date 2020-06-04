@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img class="noinfo" src="./created.png" alt="" v-if="noinfo">  
+    <img class="noinfo" src="./created.png" alt="" v-if="noinfo">
     <div class="wrapper ">
       <div class="itemWrapper  row van-hairline--bottom" v-for="(item,index) in list" :key="index">
         <div class="previewCon  row a-c" @click="show(item.id)">
@@ -44,23 +44,29 @@
 </template>
 <script type="text/ecmascript-6">
 import { list } from 'api/index'
+import { Toast } from 'vant'
 export default {
   data() {
     return {
       list: [],
-      noinfo:false
+      noinfo: false
 
 
 
     }
   },
   mounted() {
+    Toast.loading({
+      forbidClick: true,
+      duration: 0, // 持续展示 toast
+    });
     document.body.scrollTop = document.documentElement.scrollTop = 0
     this._list()
 
 
   },
   methods: {
+
 
     create() {
       this.$router.push({
@@ -113,9 +119,10 @@ export default {
       }).then(res => {
         console.log('追思卡', res)
         this.list = res.data.list
-        if(!this.list.length){
+        if (!this.list.length) {
           this.noinfo = true
         }
+        Toast.clear();
       })
     },
 
@@ -132,7 +139,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-.noinfo{
+.noinfo {
   width: 535px;
   height: 956px;
   display: block;
