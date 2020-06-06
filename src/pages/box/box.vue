@@ -70,48 +70,14 @@ export default {
     return {
       images: [
         require('./../../assets/img/indexBanner.png'),
-        require('./../../assets/img/indexBanner.png')
+        require('./../../assets/img/banner1.png'),
+        require('./../../assets/img/banner2.png')
       ],
       newList: [
-        // {
-        //   imgurl: 'http://cdn.fuyulove.com/JzbApp/images/2020/4/10/small/3d1cd9ff210e49e5a6d49e512351582b.jpg',
-        //   title: '家族宝文化风水盒 > 源满',
-        //   describe: '实木正品寿盒棺材高档殡葬用品',
-        //   price: '5768.00'
-        // },
-        // {
-        //   imgurl: 'http://cdn.fuyulove.com/JzbApp/images/2020/4/10/small/3d1cd9ff210e49e5a6d49e512351582b.jpg',
-        //   title: '家族宝文化风水盒 > 源满',
-        //   describe: '实木正品寿盒棺材高档殡葬用品',
-        //   price: '5768.00'
-        // },
-        // {
-        //   imgurl: 'http://cdn.fuyulove.com/JzbApp/images/2020/4/10/small/3d1cd9ff210e49e5a6d49e512351582b.jpg',
-        //   title: '家族宝文化风水盒 > 源满',
-        //   describe: '实木正品寿盒棺材高档殡葬用品',
-        //   price: '5768.00'
-        // },
-        // {
-        //   imgurl: 'http://cdn.fuyulove.com/JzbApp/images/2020/4/10/small/3d1cd9ff210e49e5a6d49e512351582b.jpg',
-        //   title: '家族宝文化风水盒 > 源满',
-        //   describe: '实木正品寿盒棺材高档殡葬用品',
-        //   price: '5768.00'
-        // },
-        // {
-        //   imgurl: 'http://cdn.fuyulove.com/JzbApp/images/2020/4/10/small/3d1cd9ff210e49e5a6d49e512351582b.jpg',
-        //   title: '家族宝文化风水盒 > 源满',
-        //   describe: '实木正品寿盒棺材高档殡葬用品',
-        //   price: '5768.00'
-        // },
-        // {
-        //   imgurl: 'http://cdn.fuyulove.com/JzbApp/images/2020/4/10/small/3d1cd9ff210e49e5a6d49e512351582b.jpg',
-        //   title: '家族宝文化风水盒 > 源满',
-        //   describe: '实木正品寿盒棺材高档殡葬用品',
-        //   price: '5768.00'
-        // },
+
       ],
-       newList2: [],
-       newList3: [],
+      newList2: [],
+      newList3: [],
 
 
 
@@ -198,11 +164,10 @@ export default {
 }
 </script>
 <style scoped>
-
 </style>
 <style scoped lang="stylus">
->>> html 
-  background-color: #ffffff !important;
+>>> html
+  background-color #ffffff !important
 .container
   position absolute
   top 0px

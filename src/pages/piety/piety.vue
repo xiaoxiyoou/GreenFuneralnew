@@ -51,7 +51,8 @@ export default {
       noinfoShow: false,
       images: [
         require('./../../assets/img/indexBanner.png'),
-        require('./../../assets/img/indexBanner.png')
+        require('./../../assets/img/banner1.png'),
+        require('./../../assets/img/banner2.png')
       ],
       newList: [
         // {
