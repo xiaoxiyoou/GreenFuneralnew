@@ -1,4 +1,4 @@
-import Vue from 'vue'
+﻿import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // 同一个路由多次添加不被允许
@@ -347,6 +347,17 @@ const routes = [{
     component: () => import('pages/funeralPlanning/funeralPlanning'),
     meta: {
       title: '殡仪策划',
+      requireAuth: true,
+      depth: 1
+    },
+
+  },
+  {
+    path: '/deathbed',
+    name: 'deathbed',
+    component: () => import('pages/deathbed/deathbed'),
+    meta: {
+      title: '临终关怀策划',
       requireAuth: true,
       depth: 1
     },

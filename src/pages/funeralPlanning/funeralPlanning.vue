@@ -1,10 +1,13 @@
 <template>
   <div class="container">
     <News :visitCon="visitCon" />
-    <img class="bg" src="./../../assets/img/bgTwo.png">
+    <img class="bg" src="./bgTwo.png">
     <div class="top col a-c j-a">
-      <img class="banner" src="./../../assets/img/bannerTwo.png">
-      <img class="play" @click="videoPlay" src="./../../assets/img/play.gif">
+      <img class="banner" src="./banner.png">
+      <div class="num-wrapper row j-c">
+        <div class="num col a-c j-c" v-for="(item,index) in total" :key="index">{{item}}</div>
+      </div>
+      <img class="play jump_pig_r" @click="videoPlay" src="./../../assets/img/play.png">
       <div class="text" @click="videoPlay">查看策划案详情</div>
     </div>
     <div class="content col a-c" ref="pronbit">
@@ -20,14 +23,16 @@
           <div class="text textHover" v-if="!select">我已阅读并接受《服务须知》《隐私政策》</div>
         </div>
         <div class="tip">为了您的权益，您的隐私将被严格保密。</div>
-        <div class="textbtn row j-c a-c"  @click="_serviceapi">立即申请</div>
+        <div class="textbtn row j-c a-c" @click="_serviceapi">立即申请</div>
       </div>
       <img class="process" src="./../../assets/img/process.png">
-    
       <img class="pic" src="./pic1.png" alt="">
       <img class="pic" src="./pic2.png" alt="">
       <img class="pic" src="./pic3.png" alt="">
-      <img class="pic" src="./pic4.png" alt="">
+      <div class="servicetotalCon a-c" style="position:relative">
+        <img class="pic" src="./pic41.png">
+        <div class="servicetotal" style="">累计服务 <span class="num">{{servicetotal}}</span>位家属</div>
+      </div>
       <div class="bar"></div>
     </div>
     <div class="btmFix row a-c j-c" v-if="showBtn">
@@ -50,8 +55,10 @@ import News from 'components/News/News'
 export default {
   data() {
     return {
+      servicetotal: "",
+      total: "",
       visitCon: [
-  
+
       ],
       areaShow: false,
       name: '',
@@ -60,7 +67,7 @@ export default {
       mobile: '',
       areaList: area,
       address: '',
-       // 防止被弹起
+      // 防止被弹起
       showBtn: true,
       clientHeight: document.documentElement.clientHeight,
 
@@ -69,7 +76,7 @@ export default {
   mounted() {
     document.body.scrollTop = document.documentElement.scrollTop = 0
     this._serviceGetapply()
-        // 防止被弹起
+    // 防止被弹起
     window.onresize = () => {
       if (this.clientHeight > document.documentElement.clientHeight) {
         this.showBtn = false
@@ -85,6 +92,8 @@ export default {
       }).then(res => {
         console.log('申请', res)
         this.visitCon = res.data.list
+        this.servicetotal = res.data.servicetotal
+        this.total = res.data.total.toString()
 
       })
     },
@@ -111,7 +120,7 @@ export default {
       } else if (this.mobile == '') {
         Toast('请输入您的电话')
         return false
-      } else  if (!(/^1[345789]\d{9}$/.test(this.mobile))) {
+      } else if (!(/^1[345789]\d{9}$/.test(this.mobile))) {
         Toast('请输入正确电话号码')
         return false
       } else if (this.address == '') {
@@ -198,120 +207,149 @@ export default {
     .play
       width 107px
       height 107px
-  .content
-    background-color #52aa5e
-    .title
-      width 535px
-      margin 40px auto
-    .item
-      background-color #ffffff
-      width 681px
-      padding-bottom 20px
-      .com
-        width 592px
-        height 78px
-        border-radius 39px
-        border 2px solid #52aa5e
-        margin-top 40px
-        padding-left 20px
-        font-size 30px
-      .receive
-        color #e0e0e0
-        margin-top 28px
-        img
-          width 30px
-          height 30px
-          margin-right 10px
-        .text
-          font-size 25px
-        .textHover
-          color #52aa5e
-      .tip
-        font-size 25px
-        color #52aa5e
-        margin-bottom 30px
-        margin-top 30px
-      .textbtn
-        width 600px
-        height 91px
-        border-radius 10px
-        background-color #52aa5e
-        color #ffffff
-        font-size 36px
-    .process
-      width 679px
-      margin 40px auto
-    .personWraper
-      padding 0 32px 100px
-      width 100%
-      background-color #52aa5e
-      .item
-        width 336px
-        position relative
-        height 100%
-        box-shadow 0px 0px 10px rgba(0, 0, 0, 0.28)
-        border-radius 10px
-        margin-top 22px
-        overflow hidden
-        .phone
-          position absolute
-          width 50px
-          height 50px
-          z-index 100
-          right 11px
-          top 9px
-        .personImg
-          width 100%
-          height 331px
-        .name
-          color #111111
-          font-size 31px
-          margin-top 14px
-        .des
-          color #919191
-          font-size 27px
-          border 1px solid #919191
-          border-radius 16px
-          width 197px
-          height 35px
-          margin-top 8px
-          white-space nowrap
-        .startWrapper
-          margin-top 10px
-          margin-bottom 20px
-          img
-            width 29px
-            height 27px
-            margin-left 5px
-          .grade
-            color #1ead55
-            font-size 27px
-            margin-left 2px
-    .pic
-      width 100%
-      height auto
-  .video
+.num-wrapper
+  position absolute
+  top 490px
+  width 538px
+  .num
+    width 50px
+    height 100px
+    font-family swige
+    background url('./numBg.png')
+    background-position center center
+    background-size contain
+    background-repeat no-repeat
+    font-size 58px
+    color #ffffff
+    padding-top 5px
+    margin 0 5px
+.servicetotalCon
+  background-color #52aa5e
+  .servicetotal
+    position absolute
+    z-index 10
+    bottom 322px
+    text-align center
     width 100%
-  .btmFix
-    position fixed
-    bottom 0
-    width 100%
-    background-color #1ead54
-    opacity 0.6
-    height 136px
-  .btn
-    position fixed
-    bottom 18px
-    width 600px
-    height 91px
-    border-radius 10px
+    color #ffffff
+    font-size 30px
+    .num
+      font-size 70px
+      font-family swige
+.content
+  background-color #52aa5e
+  .title
+    width 535px
+    margin 40px auto
+  .item
     background-color #ffffff
-    color #52aa5e
-    font-size 36px
-    font-weight 700
-    left 50%
-    transform translateX(-50%)
-  .bar
-    height 200px
-    background-color #e6e6e6
+    width 681px
+    padding-bottom 20px
+    .com
+      width 592px
+      height 78px
+      border-radius 39px
+      border 2px solid #52aa5e
+      margin-top 40px
+      padding-left 20px
+      font-size 30px
+    .receive
+      color #e0e0e0
+      margin-top 28px
+      img
+        width 30px
+        height 30px
+        margin-right 10px
+      .text
+        font-size 25px
+      .textHover
+        color #52aa5e
+    .tip
+      font-size 25px
+      color #52aa5e
+      margin-bottom 30px
+      margin-top 30px
+    .textbtn
+      width 600px
+      height 91px
+      border-radius 10px
+      background-color #52aa5e
+      color #ffffff
+      font-size 36px
+  .process
+    width 679px
+    margin 40px auto
+  .personWraper
+    padding 0 32px 100px
+    width 100%
+    background-color #52aa5e
+    .item
+      width 336px
+      position relative
+      height 100%
+      box-shadow 0px 0px 10px rgba(0, 0, 0, 0.28)
+      border-radius 10px
+      margin-top 22px
+      overflow hidden
+      .phone
+        position absolute
+        width 50px
+        height 50px
+        z-index 100
+        right 11px
+        top 9px
+      .personImg
+        width 100%
+        height 331px
+      .name
+        color #111111
+        font-size 31px
+        margin-top 14px
+      .des
+        color #919191
+        font-size 27px
+        border 1px solid #919191
+        border-radius 16px
+        width 197px
+        height 35px
+        margin-top 8px
+        white-space nowrap
+      .startWrapper
+        margin-top 10px
+        margin-bottom 20px
+        img
+          width 29px
+          height 27px
+          margin-left 5px
+        .grade
+          color #1ead55
+          font-size 27px
+          margin-left 2px
+  .pic
+    width 100%
+    height auto
+.video
+  width 100%
+.btmFix
+  position fixed
+  bottom 0
+  width 100%
+  background-color #1ead54
+  opacity 0.6
+  height 136px
+.btn
+  position fixed
+  bottom 18px
+  width 600px
+  height 91px
+  border-radius 10px
+  background-color #ffffff
+  color #52aa5e
+  font-size 36px
+  font-weight 700
+  left 50%
+  transform translateX(-50%)
+.bar
+  height 200px
+  background-color #e6e6e6
 </style>

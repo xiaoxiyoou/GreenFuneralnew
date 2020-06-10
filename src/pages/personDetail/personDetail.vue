@@ -83,6 +83,7 @@ export default {
       ImagePreview({
         images: [flag],
         closeable: true,
+        closeOnPopstate:true
       });
     },
     _emceeapiDetail() {

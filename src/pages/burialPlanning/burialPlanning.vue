@@ -5,13 +5,14 @@
       <img class="pic" src="./pic1.png">
     </div>
     <div class="top col a-c j-a">
-      <img class="pic" src="./pic2.png">
-      <img class="play" @click="videoPlay" src="./../../assets/img/play.gif">
+      <img class="peopleNum" src="./pic21.png">
+      <div class="num-wrapper row j-c">
+        <div class="num col a-c j-c" v-for="(item,index) in total" :key="index">{{item}}</div>
+      </div>
+      <img class="play jump_pig_r" @click="videoPlay" src="./../../assets/img/play.png">
       <div class="text" @click="videoPlay">查看策划案详情</div>
       <img class="pic" src="./pic3.png" ref="pronbit">
-
     </div>
-
     <div class="content col a-c">
       <div class="item col a-c">
         <input class="name com" type="text" placeholder="请输入您的姓名" v-model="name">
@@ -26,11 +27,13 @@
         <div class="tip">为了您的权益，您的隐私将被严格保密。</div>
         <div class="textbtn row j-c a-c" @click="_serviceapi">立即申请</div>
       </div>
-
     </div>
     <img class="pic" src="./pic4.png">
     <img class="pic" src="./pic5.png">
-    <img class="pic" src="./pic6.png">
+    <div class="servicetotalCon a-c" style="position:relative">
+      <img class="pic" src="./pic61.png">
+      <div class="servicetotal" style="">累计服务 <span class="num">{{servicetotal}}</span>位家属</div>
+    </div>
     <div class="bar"></div>
     <div class="btmFix row a-c j-c" v-if="showBtn"></div>
     <div class="btn row j-c a-c" v-if="showBtn" @click="scrollIntoView">立即申请</div>
@@ -51,9 +54,9 @@ import area from 'assets/js/area';
 export default {
   data() {
     return {
-      visitCon: [
-
-      ],
+      servicetotal:"",
+      total: "",
+      visitCon: [],
       areaShow: false,
       name: '',
       select: true,
@@ -89,6 +92,8 @@ export default {
       }).then(res => {
         console.log('申请', res)
         this.visitCon = res.data.list
+        this.servicetotal = res.data.servicetotal
+        this.total = res.data.total.toString()
 
       })
     },
@@ -115,7 +120,7 @@ export default {
       } else if (this.mobile == '') {
         Toast('请输入您的电话')
         return false
-      } else  if (!(/^1[345789]\d{9}$/.test(this.mobile))) {
+      } else if (!(/^1[345789]\d{9}$/.test(this.mobile))) {
         Toast('请输入正确电话号码')
         return false
       } else if (this.address == '') {
@@ -201,10 +206,30 @@ input:-ms-input-placeholder {
   height 100%
   bottom 0
   background-color #e6e6e6
+  .peopleNum
+    width 538px
+    height 125px
+  .num-wrapper
+    position absolute
+    top 103px
+    width 538px
+    .num
+      width 50px
+      height 100px
+      font-family swige
+      background url('./numBg.png')
+      background-position center center
+      background-size contain
+      background-repeat no-repeat
+      font-size 58px
+      color #ffffff
+      padding-top 5px
+      margin 0 5px
   .pic
     width 100%
     height auto
     background-color #e6e6e6
+    display block
   .pic7
     position absolute
     left 10px
@@ -237,14 +262,12 @@ input:-ms-input-placeholder {
       width 535px
       margin 40px auto
     .item
-      // background-color #ffffff
       width 681px
       padding-bottom 20px
       .com
         width 592px
         height 78px
         border-radius 39px
-        // border 2px solid #52aa5e
         margin-top 40px
         padding-left 20px
         font-size 30px
@@ -252,7 +275,6 @@ input:-ms-input-placeholder {
         color #ffffff
         border 2px solid #ffffff
       .receive
-        // color #e0e0e0
         margin-top 28px
         img
           width 30px
@@ -261,10 +283,8 @@ input:-ms-input-placeholder {
         .text
           font-size 25px
       .textHover
-        // color #52aa5e
       .tip
         font-size 25px
-        // color #52aa5e
         margin-bottom 30px
         margin-top 30px
       .textbtn
@@ -274,6 +294,19 @@ input:-ms-input-placeholder {
         background-color #ffffff
         color #52aa5e
         font-size 36px
+  .servicetotalCon
+    background-color #e6e6e6
+    .servicetotal
+      position  absolute
+      z-index 10 
+      bottom  322px
+      text-align center
+      width 100%
+      color #52aa5e
+      font-size 30px
+      .num
+        font-size 70px
+        font-family swige
     .process
       width 679px
       margin 40px auto

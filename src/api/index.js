@@ -4,10 +4,11 @@ import ajax from './ajax'
 
 
 const BASE_URL = 'http://product.jzb768.com/'
-// const URL = 'http://wx.fuyulove.com/'
 // 纪念堂
 const URL = 'http://partner.fuyulove.com/'
-
+const VIDEO_URL =  "https://wxappapi.fuyulove.com"
+// 视频
+export const videoList = (params) => ajax(VIDEO_URL + '/DeathbedConcernApi/DeathbedConcernList.ashx',params)
 // 登录
 export const getOpenId = (params) => ajax(URL + '/Action/UserLogin',params)
 // 产品列表

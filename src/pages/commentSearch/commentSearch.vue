@@ -25,7 +25,7 @@
               <div class="date">{{item.createdate}}</div>
               <div class="des">{{item.intro}}</div>
               <div class="imgWrapper row f-w" v-if="item.imglist.length && item.imglist[0]!= ''">
-                <img class="comImg" :src="itemImg" alt="" v-for="(itemImg,index) in item.imglist" :key="index">
+                <img class="comImg" :src="itemImg" alt="" v-for="(itemImg,index) in item.imglist.slice(0, 3)" :key="index"  @click="imgPrew(item.imglist.slice(0, 3),index)">
               </div>
               <div class="tip van-hairline--top" @click="personList(item.mid)" v-if="item.type==0">对执宾 <span>{{item.title}}</span> 的评价</div>
               <div class="tip van-hairline--top" @click="mechanDeatil(item.mid)" v-if="item.type==1">对机构 <span>{{item.title}}</span> 的评价</div>
@@ -43,6 +43,7 @@
 <script type="text/ecmascript-6">
 import { commentapiList } from 'api/index'
 import noMessage from 'components/noMessage/noMessage'
+import { ImagePreview } from 'vant';
 export default {
   data() {
     return {
@@ -69,6 +70,16 @@ export default {
 
   },
   methods: {
+     // 图片预览
+    imgPrew(flag,index) {
+      ImagePreview({
+        images: flag,
+        closeable: true,
+        startPosition:index,
+        closeOnPopstate:true
+        
+      });
+    },
 
     mechanDeatil(id) {
       this.$router.push({

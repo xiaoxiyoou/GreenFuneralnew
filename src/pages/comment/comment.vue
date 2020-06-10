@@ -76,7 +76,9 @@ export default {
       ImagePreview({
         images: flag,
         closeable: true,
-        startPosition:index
+        startPosition:index,
+        closeOnPopstate:true
+        
       });
     },
     // 分页
