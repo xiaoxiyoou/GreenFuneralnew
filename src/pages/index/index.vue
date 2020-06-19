@@ -6,7 +6,10 @@
           <img :src="image" v-if="image" />
         </van-swipe-item>
       </van-swipe>
-      <!-- <img class="banner" src="./banner.png" alt=""> -->
+      <div class="positon-wrapper row a-c" @click="areaShowList">
+        <img class="positon-img" src="./../../assets/img/positon.png" alt="">
+        <div>{{position}}</div>
+      </div>
       <div class="avertwraper row a-c " @click="personalCenter">
         <img :src="userinfo.headimgurl" alt="">
         <div>{{userinfo.nickname}}</div>
@@ -37,14 +40,22 @@
     <div class="btm  col j-c a-c">
       <img src="./btm.png" alt="">
     </div>
+    <!-- 城市选择 -->
+    <van-popup v-model="areaShow" position="bottom">
+      <van-area :area-list="areaList" title="请选择地址" :columns-num="2" @confirm="adConfirm" @cancel="adcancel" />
+    </van-popup>
 
   </div>
 </template>
 <script type="text/ecmascript-6">
 import { indexInfo, selfDetail } from 'api/index'
+import area from 'assets/js/area';
 export default {
   data() {
     return {
+      areaShow: false,
+      areaList: area,
+      position: sessionStorage.getItem('position') ||'辽宁省 沈阳市',
       info: [],
       list: [],
       banner: [],
@@ -62,6 +73,22 @@ export default {
 
   },
   methods: {
+    areaShowList() {
+      this.areaShow = true
+    },
+    adcancel() {
+      this.areaShow = false
+    },
+    // 地址选择
+    adConfirm(value) {
+      console.log(value)
+      let result = value.map(function (item) {
+        return item.name;
+      }).join(" ");
+      this.position = result
+      sessionStorage.setItem('position',this.position)
+      this.areaShow = false
+    },
     _indexInfo() {
       indexInfo().then(res => {
         console.log('功能', res)
@@ -148,6 +175,17 @@ export default {
       img
         width 100%
         height 590px
+    .positon-wrapper
+      position absolute
+      z-index 2
+      left 22px
+      top 24px
+      color #ffffff
+      font-size 24px
+      .positon-img
+        width 25px
+        height 30px
+        margin-right 10px
     .avertwraper
       position absolute
       color #ffffff
