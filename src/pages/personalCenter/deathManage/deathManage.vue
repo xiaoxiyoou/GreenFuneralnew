@@ -4,7 +4,7 @@
       <div class="item-content" v-for="(itemTwo,indexTwo) in item.renlist" :key="indexTwo">
         <div class="item-wrapper row van-hairline--bottom">
           <div>
-            <img class="pic" src="./../pic2.png" alt="">
+            <img class="pic" :src="item.imgurl" alt="">
           </div>
           <div class="list col j-b">
             <div class="name">{{itemTwo.name}}的追思纪念堂</div>
