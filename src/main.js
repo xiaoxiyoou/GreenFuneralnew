@@ -21,6 +21,7 @@ import LyTab from 'ly-tab'
 import VueWechatTitle from 'vue-wechat-title'
 Vue.use(VueWechatTitle)
 Vue.use(LyTab)
+
 Vue.prototype.$moment = 'moment'
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {

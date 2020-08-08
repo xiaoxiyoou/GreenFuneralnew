@@ -11,6 +11,12 @@
         <div class="item " :class="defalutindex==index?'hoverItem':''" @click="cateList(item.id,index)" v-for="(item,index) in catelist" :key="index">{{item.name}}</div>
       </div>
     </div>
+    <div class="search-wrap  row a-c j-c" @click="searchHall">
+      <div class="search-cont row a-c j-c">
+        <img class="search-img" src="./search.png" alt="">
+        <div class="search-text">搜索</div>
+      </div>
+    </div>
     <div class="personDetail row f-w j-b">
       <div class="item col a-c" v-for="(item,index) in list" :key="index" @click="show(item.id)">
         <img class="" :src="item.imgurl" alt="">
@@ -51,6 +57,13 @@ export default {
 
   },
   methods: {
+    searchHall() {
+      this.$router.push(
+        {
+          path: '/searchHall',
+
+        })
+    },
     _fame() {
       fame({
         action: 'index',
@@ -89,7 +102,8 @@ export default {
     },
     create() {
       this.$router.push(
-        {          path: '/create',
+        {
+          path: '/create',
           query: {
             sid: this.$route.query.sid,
 
@@ -156,12 +170,30 @@ export default {
     img
       width 29px
       height 29px
+  .search-wrap
+    width 100%
+    background-color #f5f5f5
+    height 100px
+    .search-cont
+      width 709px
+      height 64px
+      border-radius 10px
+      background-color #ffffff
+      .search-img
+        width 24px
+        height 24px
+        margin-right 5px
+      .search-text
+        color #b6b6b6
+        font-size 28px
   .personDetail
+    margin-bottom 300px
     padding 0 42px
     .item
       color #252525
       font-size 30px
       margin-top 25px
+      // width 33%
       img
         width 209px
         height 245px
@@ -172,6 +204,7 @@ export default {
     bottom 10px
     width 100%
     font-size 35px
+    // height 200px
   .created
     width 690px
     background-color #5aa967

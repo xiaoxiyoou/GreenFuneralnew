@@ -550,6 +550,18 @@ const routes = [{
     },
 
   },
+  {
+    path: '/searchHall',
+    name: 'searchHall',
+    component: () => import('pages/searchHall/searchHall'),
+    // component: resolve=>(require(['pages/searchHall/searchHall'],resolve)),
+    meta: {
+      title: '搜索纪念堂',
+      requireAuth: true,
+      depth: 1
+    },
+
+  },
 ]
 
 Vue.use(VueRouter)

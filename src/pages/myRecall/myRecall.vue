@@ -8,7 +8,8 @@
           <div class="previewTip"></div>
         </div>
         <div class="titleImgCon">
-          <img class="titleImg" :src="item.imgurl" alt="">
+          <img class="titleImg" :src="item.imgurl" alt="" v-if="item.tempid != 0">
+          <img class="titleImg" :src="item.tempurl" alt="" v-else>
           <div class="titleText  row a-c j-c" @click="modify(item.id)">编辑</div>
         </div>
         <div class="itemCont col j-a">

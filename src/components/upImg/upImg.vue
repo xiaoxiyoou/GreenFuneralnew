@@ -228,6 +228,7 @@ export default {
       font-size 25px
       .word
         white-space nowrap
+        font-size 26px
       img
         width 40px
         height 40px

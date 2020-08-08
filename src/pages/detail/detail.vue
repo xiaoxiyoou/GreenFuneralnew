@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="show">
+  <div class="container" v-if="show"  v-wechat-title="goodDetail.title">
     <van-swipe v-if="imglist.length" class="banner" :autoplay="3000" indicator-color="#b93662">
       <van-swipe-item v-for="(image, index) in imglist" :key="index">
         <img :src="image" v-if="image" />
@@ -95,6 +95,7 @@
 <script type="text/ecmascript-6">
 import { Toast } from 'vant';
 import { deatailList, goodsList, Browse, Collect } from 'api/index'
+import { share } from 'assets/js/shareDetail.js'
 export default {
   data() {
     return {
@@ -321,6 +322,7 @@ export default {
           window.addEventListener('scroll', this.handleScroll)
           window.addEventListener('scroll', this.handleScroll2)
         })
+        share(this.goodDetail.title, 'http://wx.app.jzb768.com/#/detail?id=' + this.goodDetail.id, '', this.goodDetail.imgurl)
       })
     },
     _goodsList3(catid, isnew) {
