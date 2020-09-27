@@ -11,9 +11,9 @@
       </div>
       <img class="play jump_pig_r" @click="videoPlay" src="./../../assets/img/play.png">
       <div class="text" @click="videoPlay">查看策划案详情</div>
-      <img class="pic" src="./pic3.png" ref="pronbit">
     </div>
     <div class="content col a-c">
+      <img class="pic3" src="./pic3.png" ref="pronbit">
       <div class="item col a-c">
         <input class="name com" type="text" placeholder="请输入您的姓名" v-model="name">
         <input class="tel com" type="number" placeholder="请输入手机号码" v-model="mobile">
@@ -29,7 +29,7 @@
       </div>
     </div>
     <img class="pic" src="./pic4.png">
-    <img class="pic" src="./pic5.png">
+    <!-- <img class="pic" src="./pic5.png"> -->
     <div class="servicetotalCon a-c" style="position:relative">
       <img class="pic" src="./pic61.png">
       <div class="servicetotal" style="">累计服务 <span class="num">{{servicetotal}}</span>位家属</div>
@@ -211,7 +211,7 @@ input:-ms-input-placeholder {
     height 125px
   .num-wrapper
     position absolute
-    top 103px
+    top 125px
     width 538px
     .num
       width 50px
@@ -258,12 +258,15 @@ input:-ms-input-placeholder {
   .content
     background-color #52aa5e
     color #ffffff
+    .pic3
+      width 400px
+      padding-top 40px
     .title
       width 535px
       margin 40px auto
     .item
       width 681px
-      padding-bottom 20px
+      padding-bottom 49px
       .com
         width 592px
         height 78px

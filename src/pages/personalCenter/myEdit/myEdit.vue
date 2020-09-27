@@ -86,7 +86,7 @@ export default {
     },
     _saveself() {
       if (this.userinfo.headimgurl == '') {
-        Toast('请输上传您的头像')
+        Toast('请上传您的头像')
         return false
       } else if (this.userinfo.nickname == '') {
         Toast('请输入您的昵称')

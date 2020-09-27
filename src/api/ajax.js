@@ -10,6 +10,7 @@ function getCaption(obj) {
   obj = obj.substring(index + 1, obj.length);
   return obj;
 }
+// var sid = 659
 var sid
 let fromUrl = localStorage.getItem('fromUrl')
 if (fromUrl.search("sid") != -1) {

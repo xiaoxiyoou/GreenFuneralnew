@@ -76,7 +76,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-import { personCenterlimit, getuserinfo,selfDetail } from 'api/index'
+import { personCenterlimit, getuserinfo, selfDetail } from 'api/index'
 export default {
   data() {
     return {
@@ -93,7 +93,7 @@ export default {
   },
   mounted() {
     document.body.scrollTop = document.documentElement.scrollTop = 0
-     this._selfDetail()
+    this._selfDetail()
     this._personCenterlimit()
 
   },
@@ -108,7 +108,7 @@ export default {
       })
 
     },
-       _selfDetail() {
+    _selfDetail() {
       selfDetail().then(res => {
         console.log('信息', res)
         if (res.code == 0) {

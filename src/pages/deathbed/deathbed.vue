@@ -295,7 +295,7 @@ export default {
 }
 
 .video-select-item {
-  color: #52a64e;
+  color: #52aa5e;
   font-size: 25px;
   width: 128px;
   height: 96px;
@@ -309,7 +309,7 @@ export default {
   background-color: #52a64e;
 }
 .video-btm {
-  color: #52a64e;
+  color: #52aa5e;
   font-size: 35px;
   margin: 25px auto 15px;
   font-weight: 700;

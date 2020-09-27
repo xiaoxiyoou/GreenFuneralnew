@@ -37,12 +37,14 @@
       </div>
       <div class="bar"></div>
 
-      <div class="btmCon row j-c a-c" @click="toPerson">
-        <div class="btm row j-c a-c">创建</div>
+      <div class="btmCon col j-c a-c" >
+        <div class="btm row j-c a-c" @click="toPerson">创建纪念堂</div>
+        <div class="btm row j-c a-c" @click="myRecall">我的纪念堂</div>
       </div>
       <!-- <div class="btmCon row j-c a-c" v-if="mechan"  @click="toMechan">
         <div class="btm row j-c a-c">确认提交</div>
       </div> -->
+
     </div>
     <van-popup v-model="datetime" position="bottom" :columns-placeholder="['请选择', '请选择', '请选择']" :style="{ height: '40%' }">
       <van-datetime-picker v-if="datetime" v-model="currentDate" type="date" :min-date="minDate" :max-date="maxDate" @confirm="confirm" @cancel="cancel" />
@@ -128,6 +130,11 @@ export default {
         path: './mechan'
       })
     },
+      myRecall() {
+      this.$router.push({
+        path: './myRecall'
+      })
+    },
     toPerson() {
       if (this.cardtype == 1) {
         this._addOne()
@@ -153,7 +160,7 @@ export default {
           firstName: this.firstName,
           firstDeathdate: this.firstDeathdate,
           firstBirthday: this.firstBirthday,
-          sid:this.$route.query.sid
+          sid: this.$route.query.sid
 
         }).then(res => {
           console.log('创建', res)
@@ -195,7 +202,7 @@ export default {
       } else if (this.secondDeathdate == '') {
         Toast("请输入离世时间")
         return false
-      } else{
+      } else {
         add({
           cardtype: this.cardtype,
           firstName: this.firstName,
@@ -204,7 +211,7 @@ export default {
           secondName: this.secondName,
           secondBirthday: this.secondBirthday,
           secondDeathdate: this.secondDeathdate,
-          sid:this.$route.query.sid
+          sid: this.$route.query.sid
         }).then(res => {
           console.log('创建', res)
           if (res.code == 0) {
@@ -353,6 +360,7 @@ form {
   color: #ffffff;
   font-size: 35px;
   border-radius: 10px;
+  margin-top: 10px;
 }
 .bar {
   height: 280px;

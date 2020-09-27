@@ -52,7 +52,6 @@ export default {
         centerBox: false,
         high: true
       },
-      isShowCropper: false //是否显示截图框
     }
   },
   props: {
@@ -62,18 +61,18 @@ export default {
   methods: {
     // 选择本地图片
     uploadImg() {
-      Toast.loading({
-        message: '加载中...',
-        forbidClick: true,
-        duration: 0, // 持续展示 toast
-      });
+      // Toast.loading({
+      //   message: '加载中...',
+      //   forbidClick: true,
+      //   duration: 0, // 持续展示 toast
+      // });
       wx.ready(() => {
         wx.chooseImage({
           count: 1, // 默认9
           sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
           sourceType: ['album'], // 可以指定来源是相册还是相机，默认二者都有
           success: (res) => {
-            Toast.clear();
+            // Toast.clear();
             this.upLoad(res.localIds[0])
           }
         })
@@ -100,7 +99,7 @@ export default {
         },
         data: {
           media_id: id,
-          sid: 660
+          sid: 659
         },
         transformRequest: [function (data) {
           let ret = ''
@@ -112,7 +111,7 @@ export default {
       }).then((res) => {
         console.log(res);
         this.option.img = res.data.msg;
-        console.log(res.data.msg)
+        // alert(res.data.msg)
 
 
       }).catch(function (error) {
@@ -213,7 +212,8 @@ export default {
     z-index 100
   .bottom-button
     position fixed
-    bottom 0
+    bottom 110px
+    padding 0 60px
     width 100%
     height 160px
     display flex

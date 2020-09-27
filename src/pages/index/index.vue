@@ -230,6 +230,8 @@ export default {
       img
         width 53px
         margin-bottom 15px
+    .item:nth-of-type(odd)
+      border-right 2px solid rgba(255, 255, 255, 0.2)
   .bar
     width 100%
     height 96px

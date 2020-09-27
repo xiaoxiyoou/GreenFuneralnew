@@ -15,12 +15,12 @@
     </div>
     <div class="item-wrapper row f-w j-c a-c">
       <!-- 线上 -->
-      <!-- <div class="item col j-c a-c border-right " @click="menu(index,item.link)" v-for="(item,index) in list" :key="index">
-       <img :src="item.icon" alt="">
+      <div class="item col j-c a-c " @click="menu(index,item.link)" v-for="(item,index) in list" :key="index">
+        <img :src="item.icon" alt="">
         <div>{{item.name}}</div>
-      </div> -->
+      </div>
       <!-- 本地 -->
-      <div class="item col j-c a-c border-right " @click="info1()">
+      <!-- <div class="item col j-c a-c border-right " @click="info1()">
         <img src="./icon.png" alt="">
         <div>安葬策划</div>
       </div>
@@ -35,7 +35,7 @@
       <div class="item col j-c a-c " @click="comment()">
         <img src="./comment.png" alt="">
         <div>线上追思</div>
-      </div>
+      </div> -->
     </div>
     <div class="bar"></div>
     <div class="btm  col j-c a-c">
@@ -105,17 +105,22 @@ export default {
     },
     menu(index, link) {
       console.log(link)
-      // let linkRouter = this.getCaption(link)
-      // this.$router.push({ path: linkRouter })
+      let linkRouter = this.getCaption(link)
+      this.$router.push({ path: linkRouter })
       window.location.href = link
 
     },
-
+    // 获取字符串#后面的值
+    getCaption(obj) {
+      var index = obj.lastIndexOf("#");
+      obj = obj.substring(index + 1, obj.length);
+      return obj;
+    },
     person() {
       this.$router.push({ path: '/funeralPlanning' })
     },
     mechan() {
-      
+
       this.$router.push({ path: '/deathbed' })
       // window.location.href = "http://b.fuyulove.com/ShopActity/deathbed/indexShow.html?shopId=10"
     },
@@ -202,6 +207,8 @@ export default {
       img
         width 53px
         margin-bottom 15px
+    .item:nth-of-type(odd)
+      border-right 2px solid rgba(255, 255, 255, 0.2)
   .bar
     width 100%
     height 96px

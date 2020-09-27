@@ -10,12 +10,14 @@
           <div class="text">{{item.title}}</div>
         </div>
       </div>
-    </div>
-    <div class="template-wrapper" @click="cropShow(true,1)">
-      <div class="item">
-        <img class="banner" src="./upImg.png" alt="">
+      <div class="template-wrapper" @click="cropShow(true,1)">
+        <div class="item">
+          <img class="banner" src="./upImg.png" alt="">
+          <div class="text"></div>
+        </div>
       </div>
     </div>
+
     <div class="btm row">
       <div class="preview row j-c a-c" @click="show2">预览模板</div>
       <div class="confirm row j-c a-c" @click="_uptemplate">确认模板</div>
@@ -59,7 +61,7 @@ export default {
       this.tempid = 0
       this._uptemplate()
       this._templist()
-     
+
     },
     // 上传图片
     cropShow(flag, cropstate) {
@@ -166,6 +168,8 @@ export default {
 }
 .template {
   margin-top: 35px;
+  padding-bottom: 150px;
+  background: #ffffff;
 }
 .template-wrapper {
   position: relative;
@@ -201,6 +205,7 @@ export default {
   color: #5aa967;
   width: 50%;
   height: 100%;
+  background: #ffffff;
 }
 .btm > .confirm {
   color: #ffffff;

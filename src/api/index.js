@@ -6,6 +6,7 @@ import ajax from './ajax'
 const BASE_URL = 'http://product.jzb768.com/'
 // 纪念堂
 const URL = 'http://partner.fuyulove.com/'
+// const URL = '/'
 const VIDEO_URL =  "https://wxappapi.fuyulove.com"
 // 视频
 export const videoList = (params) => ajax(VIDEO_URL + '/DeathbedConcernApi/DeathbedConcernList.ashx',params)

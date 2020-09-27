@@ -7,10 +7,10 @@ export const share = (
   desc,
   imgUrl
 ) => {
-  axios.get('http://passport.fuyulove.com/action/jssdk', {
+  axios.get('http://b.fuyulove.com/Action/CacheData.aspx?action=jssdk', {
       params: {
-        sid: 658,
         url: location.href.split('#')[0],
+        sid: 659,
         t: Math.random()
       }
     })

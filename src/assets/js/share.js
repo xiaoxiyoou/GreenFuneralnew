@@ -1,4 +1,4 @@
-import Vue from 'vue'
+﻿import Vue from 'vue'
 // import { getSdkData  } from 'api/index'
 import axios from 'axios'
 var wx = require('weixin-js-sdk')
@@ -9,7 +9,8 @@ export default function wxShare({
   axios.get('http://b.fuyulove.com/Action/CacheData.aspx?action=jssdk', {
       params: {
         url: location.href.split('#')[0],
-        t: Math.random()
+        sid:659,
+        t: Math.random(),
       }
     })
     .then(res => {

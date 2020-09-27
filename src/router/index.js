@@ -13,7 +13,7 @@ const routes = [{
   {
     path: '/login',
     name: 'login',
-    component: () => import('pages/login/login'),
+    component: resolve=>(require(['pages/login/login'],resolve)),
     meta: {
       title: '绿色殡葬',
       depth: 1
@@ -22,7 +22,7 @@ const routes = [{
   {
     path: '/index',
     name: 'index',
-    component: () => import('pages/index/index'),
+    component: resolve=>(require(['pages/index/index'],resolve)),
     meta: {
       title: '绿色殡葬',
       requireAuth: true,
@@ -32,7 +32,7 @@ const routes = [{
   {
     path: '/person',
     name: 'person',
-    component: () => import('pages/person/person'),
+    component: resolve=>(require(['pages/person/person'],resolve)),
     meta: {
       title: '人员公示',
       requireAuth: true,
@@ -42,7 +42,7 @@ const routes = [{
   {
     path: '/create',
     name: 'create',
-    component: () => import('pages/create/create'),
+    component: resolve=>(require(['pages/create/create'],resolve)),
     meta: {
       title: '创建追思纪念堂',
       requireAuth: true,
@@ -52,7 +52,7 @@ const routes = [{
   {
     path: '/search',
     name: 'search',
-    component: () => import('pages/search/search'),
+    component: resolve=>(require(['pages/search/search'],resolve)),
     meta: {
       title: '搜索',
       requireAuth: true,
@@ -62,7 +62,7 @@ const routes = [{
   {
     path: '/personDetail',
     name: 'personDetail',
-    component: () => import('pages/personDetail/personDetail'),
+    component: resolve=>(require(['pages/personDetail/personDetail'],resolve)),
     meta: {
       title: '人员详情',
       requireAuth: true,
@@ -72,7 +72,7 @@ const routes = [{
   {
     path: '/mechan',
     name: 'mechan',
-    component: () => import('pages/mechan/mechan'),
+    component: resolve=>(require(['pages/mechan/mechan'],resolve)),
     meta: {
       title: '机构公示',
       requireAuth: true,
@@ -82,7 +82,7 @@ const routes = [{
   {
     path: '/mechanDeatil',
     name: 'mechanDeatil',
-    component: () => import('pages/mechanDeatil/mechanDeatil'),
+    component: resolve=>(require(['pages/mechanDeatil/mechanDeatil'],resolve)),
     meta: {
       title: '机构详情',
       requireAuth: true,
@@ -92,7 +92,7 @@ const routes = [{
   {
     path: '/jion',
     name: 'jion',
-    component: () => import('pages/jion/jion'),
+    component: resolve=>(require(['pages/jion/jion'],resolve)),
     meta: {
       title: '申请加入',
       requireAuth: true,
@@ -102,7 +102,7 @@ const routes = [{
   {
     path: '/comment',
     name: 'comment',
-    component: () => import('pages/comment/comment'),
+    component: resolve=>(require(['pages/comment/comment'],resolve)),
     meta: {
       title: '评价公示',
       requireAuth: true,
@@ -112,7 +112,7 @@ const routes = [{
   {
     path: '/commentDetail',
     name: 'commentDetail',
-    component: () => import('pages/commentDetail/commentDetail'),
+    component: resolve=>(require(['pages/commentDetail/commentDetail'],resolve)),
     meta: {
       title: '市民评价',
       requireAuth: true,
@@ -122,7 +122,7 @@ const routes = [{
   {
     path: '/toComment',
     name: 'toComment',
-    component: () => import('pages/toComment/toComment'),
+    component: resolve=>(require(['pages/toComment/toComment'],resolve)),
     meta: {
       title: '评价',
       requireAuth: true,
@@ -132,7 +132,7 @@ const routes = [{
   {
     path: '/info',
     name: 'info',
-    component: () => import('pages/info/info'),
+    component: resolve=>(require(['pages/info/info'],resolve)),
     meta: {
       title: '政策公示',
       requireAuth: true,
@@ -142,7 +142,7 @@ const routes = [{
   {
     path: '/service',
     name: 'service',
-    component: () => import('pages/service/service'),
+    component: resolve=>(require(['pages/service/service'],resolve)),
     meta: {
       title: '绿色殡葬',
       requireAuth: true,
@@ -152,7 +152,7 @@ const routes = [{
   {
     path: '/recall',
     name: 'recall',
-    component: () => import('pages/recall/recall'),
+    component: resolve=>(require(['pages/recall/recall'],resolve)),
     meta: {
       title: '线上追思',
       requireAuth: true,
@@ -162,7 +162,7 @@ const routes = [{
   {
     path: '/completion',
     name: 'completion',
-    component: () => import('pages/completion/completion'),
+    component: resolve=>(require(['pages/completion/completion'],resolve)),
     meta: {
       title: '创建成功',
       requireAuth: true,
@@ -172,7 +172,7 @@ const routes = [{
   {
     path: '/modify',
     name: 'modify',
-    component: () => import('pages/modify/modify'),
+    component: resolve=>(require(['pages/modify/modify'],resolve)),
     meta: {
       title: '编辑纪念堂',
       requireAuth: true,
@@ -182,7 +182,7 @@ const routes = [{
   {
     path: '/myRecall',
     name: 'myRecall',
-    component: () => import('pages/myRecall/myRecall'),
+    component: resolve=>(require(['pages/myRecall/myRecall'],resolve)),
     meta: {
       title: '我的追思纪念堂',
       requireAuth: true,
@@ -192,7 +192,7 @@ const routes = [{
   {
     path: '/show',
     name: 'show',
-    component: () => import('pages/show/show'),
+    component: resolve=>(require(['pages/show/show'],resolve)),
     meta: {
       title: '',
       requireAuth: true,
@@ -202,7 +202,7 @@ const routes = [{
   {
     path: '/news',
     name: 'news',
-    component: () => import('pages/news/news'),
+    component: resolve=>(require(['pages/news/news'],resolve)),
     meta: {
       title: '共享纪念堂申请',
       requireAuth: true,
@@ -212,7 +212,7 @@ const routes = [{
   {
     path: '/diary',
     name: 'diary',
-    component: () => import('pages/diary/diary'),
+    component: resolve=>(require(['pages/diary/diary'],resolve)),
     meta: {
       title: '追思日记',
       requireAuth: true,
@@ -222,7 +222,7 @@ const routes = [{
   {
     path: '/setting',
     name: 'setting',
-    component: () => import('pages/setting/setting'),
+    component: resolve=>(require(['pages/setting/setting'],resolve)),
     meta: {
       title: '功能设置',
       requireAuth: true,
@@ -232,7 +232,7 @@ const routes = [{
   {
     path: '/template',
     name: 'template',
-    component: () => import('pages/template/template'),
+    component: resolve=>(require(['pages/template/template'],resolve)),
     meta: {
       title: '选择追思纪念堂模板',
       requireAuth: true,
@@ -242,7 +242,7 @@ const routes = [{
   {
     path: '/music',
     name: 'music',
-    component: () => import('pages/music/music'),
+    component: resolve=>(require(['pages/music/music'],resolve)),
     meta: {
       title: '选择追思纪念堂音乐',
       requireAuth: true,
@@ -252,7 +252,7 @@ const routes = [{
   {
     path: '/remindDetail',
     name: 'remindDetail',
-    component: () => import('pages/remindDetail/remindDetail'),
+    component: resolve=>(require(['pages/remindDetail/remindDetail'],resolve)),
     meta: {
       title: '祭祀提醒',
       requireAuth: true,
@@ -262,7 +262,7 @@ const routes = [{
   {
     path: '/share',
     name: 'share',
-    component: () => import('pages/share/share'),
+    component: resolve=>(require(['pages/share/share'],resolve)),
     meta: {
       title: '分享',
       requireAuth: true,
@@ -272,7 +272,7 @@ const routes = [{
   {
     path: '/product',
     name: 'product',
-    component: () => import('pages/product/product'),
+    component: resolve=>(require(['pages/product/product'],resolve)),
     meta: {
       title: '绿色殡葬',
       requireAuth: true,
@@ -282,7 +282,7 @@ const routes = [{
   {
     path: '/box',
     name: 'box',
-    component: () => import('pages/box/box'),
+    component: resolve=>(require(['pages/box/box'],resolve)),
     meta: {
       title: '知名品牌',
       requireAuth: true,
@@ -292,7 +292,7 @@ const routes = [{
   {
     path: '/burial',
     name: 'burial',
-    component: () => import('pages/burial/burial'),
+    component: resolve=>(require(['pages/burial/burial'],resolve)),
     meta: {
       title: '安葬用品',
       requireAuth: true,
@@ -302,7 +302,7 @@ const routes = [{
   {
     path: '/funeral',
     name: 'funeral',
-    component: () => import('pages/funeral/funeral'),
+    component: resolve=>(require(['pages/funeral/funeral'],resolve)),
     meta: {
       title: '殡仪用品',
       requireAuth: true,
@@ -312,7 +312,7 @@ const routes = [{
   {
     path: '/piety',
     name: 'piety',
-    component: () => import('pages/piety/piety'),
+    component: resolve=>(require(['pages/piety/piety'],resolve)),
     meta: {
       title: '孝道用品',
       requireAuth: true,
@@ -322,7 +322,7 @@ const routes = [{
   {
     path: '/detail',
     name: 'detail',
-    component: () => import('pages/detail/detail'),
+    component: resolve=>(require(['pages/detail/detail'],resolve)),
     meta: {
       title: '产品详情',
       requireAuth: true,
@@ -333,7 +333,7 @@ const routes = [{
   {
     path: '/burialPlanning',
     name: 'burialPlanning',
-    component: () => import('pages/burialPlanning/burialPlanning'),
+    component: resolve=>(require(['pages/burialPlanning/burialPlanning'],resolve)),
     meta: {
       title: '安葬策划',
       requireAuth: true,
@@ -344,7 +344,7 @@ const routes = [{
   {
     path: '/funeralPlanning',
     name: 'funeralPlanning',
-    component: () => import('pages/funeralPlanning/funeralPlanning'),
+    component: resolve=>(require(['pages/funeralPlanning/funeralPlanning'],resolve)),
     meta: {
       title: '殡仪策划',
       requireAuth: true,
@@ -355,7 +355,7 @@ const routes = [{
   {
     path: '/deathbed',
     name: 'deathbed',
-    component: () => import('pages/deathbed/deathbed'),
+    component: resolve=>(require(['pages/deathbed/deathbed'],resolve)),
     meta: {
       title: '临终关怀策划',
       requireAuth: true,
@@ -366,7 +366,7 @@ const routes = [{
   {
     path: '/life',
     name: 'life',
-    component: () => import('pages/life/life'),
+    component: resolve=>(require(['pages/life/life'],resolve)),
     meta: {
       title: '生平模板',
       requireAuth: true,
@@ -377,7 +377,7 @@ const routes = [{
   {
     path: '/InfoDetail',
     name: 'InfoDetail',
-    component: () => import('pages/InfoDetail/InfoDetail'),
+    component: resolve=>(require(['pages/InfoDetail/InfoDetail'],resolve)),
     meta: {
       title: '公示详情',
       requireAuth: true,
@@ -388,7 +388,7 @@ const routes = [{
   {
     path: '/personalCenter',
     name: 'personalCenter',
-    component: () => import('pages/personalCenter/personalCenter'),
+    component: resolve=>(require(['pages/personalCenter/personalCenter'],resolve)),
     meta: {
       title: '个人中心',
       requireAuth: true,
@@ -399,7 +399,7 @@ const routes = [{
   {
     path: '/guestLogin',
     name: 'guestLogin',
-    component: () => import('pages/guestLogin/guestLogin'),
+    component: resolve=>(require(['pages/guestLogin/guestLogin'],resolve)),
     meta: {
       title: '执宾入口',
       requireAuth: true,
@@ -410,7 +410,7 @@ const routes = [{
   {
     path: '/deathManage',
     name: 'deathManage',
-    component: () => import('pages/personalCenter/deathManage/deathManage'),
+    component: resolve=>(require(['pages/personalCenter/deathManage/deathManage'],resolve)),
     meta: {
       title: '忌日管理',
       requireAuth: true,
@@ -421,7 +421,7 @@ const routes = [{
   {
     path: '/personModify',
     name: 'personModify',
-    component: () => import('pages/personalCenter/personModify/personModify'),
+    component: resolve=>(require(['pages/personalCenter/personModify/personModify'],resolve)),
     meta: {
       title: '修改执殡信息',
       requireAuth: true,
@@ -432,7 +432,7 @@ const routes = [{
   {
     path: '/mechanModify',
     name: 'mechanModify',
-    component: () => import('pages/personalCenter/mechanModify/mechanModify'),
+    component: resolve=>(require(['pages/personalCenter/mechanModify/mechanModify'],resolve)),
     meta: {
       title: '修改机构信息',
       requireAuth: true,
@@ -443,7 +443,7 @@ const routes = [{
   {
     path: '/myMessage',
     name: 'myMessage',
-    component: () => import('pages/personalCenter/myMessage/myMessage'),
+    component: resolve=>(require(['pages/personalCenter/myMessage/myMessage'],resolve)),
     meta: {
       title: '留言管理',
       requireAuth: true,
@@ -454,7 +454,7 @@ const routes = [{
   {
     path: '/myEvaluate',
     name: 'myEvaluate',
-    component: () => import('pages/personalCenter/myEvaluate/myEvaluate'),
+    component: resolve=>(require(['pages/personalCenter/myEvaluate/myEvaluate'],resolve)),
     meta: {
       title: '评价记录',
       requireAuth: true,
@@ -465,7 +465,7 @@ const routes = [{
   {
     path: '/myEdit',
     name: 'myEdit',
-    component: () => import('pages/personalCenter/myEdit/myEdit'),
+    component: resolve=>(require(['pages/personalCenter/myEdit/myEdit'],resolve)),
     meta: {
       title: '编辑个人信息',
       requireAuth: true,
@@ -476,7 +476,7 @@ const routes = [{
   {
     path: '/myCollection',
     name: 'myCollection',
-    component: () => import('pages/personalCenter/myCollection/myCollection'),
+    component: resolve=>(require(['pages/personalCenter/myCollection/myCollection'],resolve)),
     meta: {
       title: '我的收藏',
       requireAuth: true,
@@ -487,7 +487,7 @@ const routes = [{
   {
     path: '/myBrowsing',
     name: 'myBrowsing',
-    component: () => import('pages/personalCenter/myBrowsing/myBrowsing'),
+    component: resolve=>(require(['pages/personalCenter/myBrowsing/myBrowsing'],resolve)),
     meta: {
       title: '最近浏览',
       requireAuth: true,
@@ -498,7 +498,7 @@ const routes = [{
   {
     path: '/puplic',
     name: 'puplic',
-    component: () => import('pages/puplic/puplic'),
+    component: resolve=>(require(['pages/puplic/puplic'],resolve)),
     meta: {
       title: '测试',
       requireAuth: true,
@@ -509,7 +509,7 @@ const routes = [{
   {
     path: '/delete',
     name: 'delete',
-    component: () => import('pages/delete/delete'),
+    component: resolve=>(require(['pages/delete/delete'],resolve)),
     meta: {
       title: '追思纪念堂已被删除',
       requireAuth: true,
@@ -520,7 +520,7 @@ const routes = [{
   {
     path: '/mechanSearch',
     name: 'mechanSearch',
-    component: () => import('pages/mechanSearch/mechanSearch'),
+    component: resolve=>(require(['pages/mechanSearch/mechanSearch'],resolve)),
     meta: {
       title: '搜索',
       requireAuth: true,
@@ -531,7 +531,7 @@ const routes = [{
   {
     path: '/personSearch',
     name: 'personSearch',
-    component: () => import('pages/personSearch/personSearch'),
+    component: resolve=>(require(['pages/personSearch/personSearch'],resolve)),
     meta: {
       title: '搜索',
       requireAuth: true,
@@ -542,7 +542,7 @@ const routes = [{
   {
     path: '/commentSearch',
     name: 'commentSearch',
-    component: () => import('pages/commentSearch/commentSearch'),
+    component: resolve=>(require(['pages/commentSearch/commentSearch'],resolve)),
     meta: {
       title: '搜索',
       requireAuth: true,
@@ -553,8 +553,8 @@ const routes = [{
   {
     path: '/searchHall',
     name: 'searchHall',
-    component: () => import('pages/searchHall/searchHall'),
     // component: resolve=>(require(['pages/searchHall/searchHall'],resolve)),
+    component: resolve=>(require(['pages/searchHall/searchHall'],resolve)),
     meta: {
       title: '搜索纪念堂',
       requireAuth: true,
