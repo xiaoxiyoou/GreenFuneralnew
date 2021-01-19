@@ -11,7 +11,7 @@
     </div>
     <img class="lastImg" :src="imgUrl" alt="" />
     <div class="img-list">
-      <div class="item " v-for="(item, index) in flowerCon" :key="index" @click="flowerSlecet(index)" :class="{ on: isActive == index }">
+      <div class="item " v-for="(item, index) in flowerCon" :key="index" @click="flowerSlecet(index)" :class="{ on: isActive == index }" >
         <img :src="item.imgUrl" alt="" />
       </div>
 
@@ -25,6 +25,7 @@ import { Toast } from 'vant';
 export default {
   data() {
     return {
+       color:localStorage.getItem("color") ,
       flowerCon: [
         {
           imgUrl: require('./zhuisitupian.png'),
@@ -169,5 +170,5 @@ export default {
     .on
       background url('./hover.png') no-repeat right top
       background-size 30px 30px
-      border 1px solid #5aa967
+      border 1px solid #575757 
 </style>

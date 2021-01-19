@@ -54,7 +54,7 @@ import area from 'assets/js/area';
 export default {
   data() {
     return {
-      servicetotal:"",
+      servicetotal: "",
       total: "",
       visitCon: [],
       areaShow: false,
@@ -285,8 +285,7 @@ input:-ms-input-placeholder {
           margin-right 10px
         .text
           font-size 25px
-      .textHover
-      .tip
+      .textHover, .tip
         font-size 25px
         margin-bottom 30px
         margin-top 30px
@@ -300,9 +299,9 @@ input:-ms-input-placeholder {
   .servicetotalCon
     background-color #e6e6e6
     .servicetotal
-      position  absolute
-      z-index 10 
-      bottom  322px
+      position absolute
+      z-index 10
+      bottom 322px
       text-align center
       width 100%
       color #52aa5e
@@ -371,6 +370,7 @@ input:-ms-input-placeholder {
     background-color #1ead54
     opacity 0.6
     height 136px
+    z-index 100
   .btn
     position fixed
     bottom 18px
@@ -382,5 +382,6 @@ input:-ms-input-placeholder {
     font-size 36px
     font-weight 700
     left 50%
+    z-index 101
     transform translateX(-50%)
 </style>

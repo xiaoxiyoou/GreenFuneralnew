@@ -70,7 +70,8 @@
       <div class="btmMsg">
         <div class="item row j-b a-c">
           <div class="text">逝者生平</div>
-          <div class="btn row a-c j-c" @click="lifeSelect">选择生平模板</div>
+          <div class="btn row a-c j-c" @click="lifeSelect" 
+:style="{'background-color':color}">选择生平模板</div>
         </div>
         <textarea name="life" v-model="life" @blur="getHeight"></textarea>
         <div class="item row j-b a-c">
@@ -91,7 +92,8 @@
         <div class="layui-upload-list alltu" id="lblimglist"></div>
       </div>
       <div class="btmCon row j-c a-c" @click="myRecall">
-        <div class="btm row j-c a-c" v-if="showBtn">提交</div>
+        <div class="btm row j-c a-c" v-if="showBtn" 
+:style="{'background-color':color}">提交</div>
       </div>
       <div class="bar"></div>
     </div>
@@ -121,7 +123,8 @@
             <div class="itemText">
               {{item.desn}}
             </div>
-            <div class="selectedTpl" @click="tempSelect(index)">选用此模板</div>
+            <div class="selectedTpl" @click="tempSelect(index)" 
+:style="{'background-color':color}">选用此模板</div>
           </div>
         </div>
       </div>
@@ -139,6 +142,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      color: localStorage.getItem("color"),
       lifeshow: false,
       imglist: '',
       life: '',
@@ -586,10 +590,10 @@ export default {
   height: 61px;
   overflow: hidden;
   border-radius: 10px;
-  border: 1px solid #5aa967;
+  border: 2px solid #1b1b1b;
   background-color: #ffffff;
   margin-top: 36px;
-  color: #5aa967;
+  color: #1b1b1b;
 }
 
 .tabDouble {
@@ -598,7 +602,7 @@ export default {
   height: 61px;
 }
 .hover {
-  background-color: #5aa967;
+  background-color: #575757;
   color: #ffffff;
 }
 .peopleMsg {

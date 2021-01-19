@@ -23,19 +23,19 @@
             <div class="name">{{item.companyname}}</div>
             <div class="startWrapper row  a-c">
               <div class="tip">服务指数</div>
-              <van-rate v-model="item.score" allow-half void-icon="star" void-color="#eee" color="#1ead55" size="15" />
+              <van-rate v-model="item.score" allow-half void-icon="star" void-color="#eee" :color="color" size="15" readonly/>
         
-              <div class="grade">{{item.score}}分</div>
+              <div class="grade" :style="{'color':color}">{{item.score}}分</div>
             </div>
             <div class="btm row a-c">
-              <img src="./../../assets/img/dingwei.png" alt="">
+              <img src="./../../assets/img/dingwei.png" alt="" :style="{'background-color':color}">
               <div class="des row j-c a-c" v-if="item.address">{{item.address}}</div>
               <div class="des row j-c a-c" v-else>暂未完善</div>
             </div>
           </div>
         </div>
         <div class="phoneWrapper col j-c a-c">
-          <img class="phone" src="./../../assets/img/phoneBig.png" alt="" @click.stop="callPhone(item.mobile)">
+          <img class="phone" src="./../../assets/img/phoneBig.png" alt="" @click.stop="callPhone(item.mobile)" :style="{'background-color':color}">
           <!-- <div>{{item.distance}}</div> -->
         </div>
       </div>
@@ -50,6 +50,7 @@ import noMessage from 'components/noMessage/noMessage'
 export default {
   data() {
     return {
+      color:localStorage.getItem("color"),
       finishedtext: '',
       noinfoShow: false,
       info: '',
@@ -209,9 +210,10 @@ export default {
       border-right 1px solid #f5f5f5
       padding-right 10px
       .hoverItem
-        color #1ead55
+        // color #1ead55
         font-size 32px
-        border-bottom 3px solid #1ead55
+        font-weight 700
+        // border-bottom 3px solid #1ead55
         padding-bottom 2px
       img
         width 22px

@@ -15,17 +15,19 @@
     <div class="dropdown col a-c" v-if="dropdown">
       <div class="item col a-c" @click="personList(item.id)" v-for="(item,index) in catlist" :key="index">{{item.name}}</div>
     </div>
-    <van-list v-model="loading" :finished="finished"  :finished-text="finishedtext" @load="onLoad">
+    <van-list v-model="loading" :finished="finished" :finished-text="finishedtext" @load="onLoad">
       <div class="personWraper row f-w j-b">
         <div class="item col a-c" @click="personDetail(item.id)" v-for="(item,index) in list" :key="index">
-          <img class="phone" src="./phone.png" alt="" @click.stop="callPhone(item.mobile)">
-          <img class="person" :src="item.headimgurl" alt="">
+          <img class="phone" src="./phone.png" alt="" @click.stop="callPhone(item.mobile)" >
+          <div class="img-wrap">
+            <img class="person" :src="item.headimgurl" alt="">
+          </div>
           <div class="name">{{item.name}}</div>
           <div class="des row j-c a-c" v-if="item.qualification">{{item.qualification}}</div>
           <div class="des row j-c a-c" v-else>暂无资质</div>
           <div class="startWrapper row j-c a-c">
-            <van-rate v-model="item.score" allow-half void-icon="star" void-color="#eee" color="#1ead55" size="15" />
-            <div class="grade">{{item.score}}分</div>
+            <van-rate v-model="item.score" allow-half void-icon="star" void-color="#eee" :color=color size="15" readonly />
+            <div class="grade" :style="{'color':color}">{{item.score}}分</div>
           </div>
         </div>
       </div>
@@ -55,7 +57,8 @@ export default {
       size: 10,
       count: '',
       catid: '',
-      act: 'recom'
+      act: 'recom',
+       color:localStorage.getItem("color") 
     }
   },
   mounted() {
@@ -208,9 +211,10 @@ export default {
       border-right 1px solid #f5f5f5
       padding-right 10px
       .hoverItem
-        color #1ead55
+        // color #1ead55
         font-size 32px
-        border-bottom 3px solid #1ead55
+        font-weight 700
+        // border-bottom 3px solid #1ead55
         padding-bottom 2px
       img
         width 22px
@@ -223,7 +227,7 @@ export default {
   .dropdown
     position absolute
     right 83px
-    z-index 100
+    z-index 1000
     background-color #ffffff
     font-size 28px
     width 247px
@@ -249,9 +253,14 @@ export default {
         z-index 100
         right 11px
         top 9px
-      .person
+      .img-wrap
         width 100%
-        height 331px
+        height 400px  
+        overflow hidden      
+        .person
+          width 100%
+          min-height 400px
+          height auto
       .name
         color #111111
         font-size 31px

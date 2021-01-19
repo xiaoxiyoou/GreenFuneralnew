@@ -35,7 +35,6 @@ export default {
     GetCode: function (sid) {
      
       let redirectUrl = window.location.href
-      //  let url = 'http://002.app.fuyulove.com/connect/authorize?sid=' + sid + '&redirect_uri=' + redirectUrl
       let url = 'http://passport.fuyulove.com/connect/authorize?sid=' + sid + '&redirect_uri=' + redirectUrl;
       window.location.href = url
     },

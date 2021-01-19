@@ -12,15 +12,15 @@
             <div class="name">{{item.name}}</div>
             <div class="des row j-c a-c">{{item.qualification}}</div>
             <div class="startWrapper row j-c a-c">
-              <van-rate v-model="item.score" allow-half void-icon="star" void-color="#eee" color="#1ead55" size="15" />
-              <div class="grade">{{item.score}}分</div>
+              <van-rate v-model="item.score" allow-half void-icon="star" void-color="#eee" :color=color size="15" readonly />
+            <div class="grade" :style="{'color':color}">{{item.score}}分</div>
             </div>
           </div>
         </div>
         <noMessage :noinfoShow="noinfoShow" />
       </van-list>
     </div>
-    <div class="btm row j-c a-c" @click="jion">申请加入公示人员/机构</div>
+    <div class="btm row j-c a-c" @click="jion" :style="{'background-color':color}">申请加入公示人员/机构</div>
     <div class="bar"></div>
   </div>
 
@@ -42,6 +42,7 @@ export default {
       value: '',
       list: [],
       noinfoShow: false,
+       color:localStorage.getItem("color") 
 
 
 

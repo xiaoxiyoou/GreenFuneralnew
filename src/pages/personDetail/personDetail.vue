@@ -2,20 +2,22 @@
   <div class="container">
     <div class="top row a-c j-b">
       <div class="personDetail row a-c">
-        <img class="person" :src="info.headimgurl" alt="" @click="imgPrew(info.headimgurl)">
+        <div class="img-wrap">
+          <img class="person" :src="info.headimgurl" alt="" @click="imgPrew(info.headimgurl)">
+        </div>
         <div class="item col j-a">
           <div class="name">{{info.name}}</div>
           <div class="startWrapper row j-c a-c">
             <div class="tip">服务指数</div>
-            <van-rate v-model="star" allow-half void-icon="star" void-color="#eee" color="#1ead55" size="15" />
-            <div class="grade">{{star}}分</div>
+            <van-rate v-model="star" allow-half void-icon="star" void-color="#eee" :color=color readonly size="15" />
+            <div class="grade" :style="{'color':color}">{{star}}分</div>
           </div>
           <div class="des row j-c a-c" v-if="info.qualification">{{info.qualification}}</div>
           <div class="des row j-c a-c" v-else>暂无资质</div>
         </div>
       </div>
       <div class="phoneWrapper col j-c a-c">
-        <img class="phone" src="./../../assets/img/phoneBig.png" alt="" @click.stop="callPhone(info.mobile)">
+        <img class="phone" src="./../../assets/img/phoneBig.png"  :style="{'background-color':color}" alt="" @click.stop="callPhone(info.mobile)">
       </div>
     </div>
     <div class="detail">
@@ -51,8 +53,8 @@
       </div>
     </div>
     <div class="btm row j-c a-c" @click="commentDetail">
-      <img class="" src="./message.png" alt="">
-      <div>市民评价</div>
+      <img class="" src="../../assets/img/message.png" alt="" :style="{'background-color':color}">
+      <div :style="{'color':color}">市民评价</div>
     </div>
   </div>
 
@@ -65,7 +67,7 @@ export default {
     return {
       star: 0.1,
       info: '',
-
+ color:localStorage.getItem("color") 
 
 
 
@@ -83,7 +85,7 @@ export default {
       ImagePreview({
         images: [flag],
         closeable: true,
-        closeOnPopstate:true
+        closeOnPopstate: true
       });
     },
     _emceeapiDetail() {
@@ -135,9 +137,13 @@ export default {
     background-color #ffffff
     margin-bottom 9px
     .personDetail
-      .person
+      .img-wrap
         width 139px
-        height 139px
+        height 160px 
+        overflow hidden       
+        .person
+          width 139px
+          min-height 160px
       .item
         margin-left 19px
         height 139px
@@ -151,6 +157,7 @@ export default {
           border-radius 16px
           width 200px
           height 35px
+          margin-top 10px
         .startWrapper
           font-size 27px
           .tip

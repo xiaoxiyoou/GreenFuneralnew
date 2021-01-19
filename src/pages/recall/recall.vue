@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <!-- <img class="banner" src="./banner.png" alt=""> -->
     <van-swipe class="banner" :autoplay="3000" indicator-color="#5aa967">
       <van-swipe-item v-for="(image, index) in banner" :key="index">
         <img :src="image" v-if="image" />
@@ -22,12 +21,10 @@
         <img class="" :src="item.imgurl" alt="">
         <div class="text">{{item.name}}</div>
       </div>
-
     </div>
     <div class="btm col a-c">
-      <div class="created row a-c j-c" @click="create">创建追思纪念堂</div>
-      <div class="myRecall row a-c j-c" @click="myRecall">我的追思纪念堂</div>
-
+      <div class="created row a-c j-c"  @click="create" :style="{'background-color':color}">创建追思纪念堂</div>
+      <div class="myRecall row a-c j-c" @click="myRecall" :style="{'color':color,'border-color': color}">我的追思纪念堂</div>
     </div>
   </div>
 
@@ -41,7 +38,8 @@ export default {
       defalutindex: 0,
       list: [],
       catelist: [],
-      banner: []
+      banner: [],
+      color:localStorage.getItem("color") 
 
 
 
@@ -50,8 +48,7 @@ export default {
   },
   mounted() {
     document.body.scrollTop = document.documentElement.scrollTop = 0
-    console.log('sid', this.$route.query.sid)
-    sessionStorage.setItem('sid', this.$route.query.sid)
+    sessionStorage.setItem('sid', this.$route.query.sid || sessionStorage.getItem("sid"))
     this._fame()
 
 
@@ -105,7 +102,7 @@ export default {
         {
           path: '/create',
           query: {
-            sid: this.$route.query.sid,
+            sid: this.$route.query.sid || sessionStorage.getItem("sid"),
 
           }
         })
@@ -134,6 +131,7 @@ export default {
   }
 }
 </script>
+
 <style scoped lang="stylus">
 .container
   position absolute
@@ -158,10 +156,11 @@ export default {
       .item
         margin-right 70px
       .hoverItem
-        color #1ead55
+        // color #1ead55
         font-size 32px
-        border-bottom 3px solid #1ead55
+        // border-bottom 3px solid #1ead55
         padding-bottom 2px
+        font-weight 700
       img
         width 22px
         height 11px
@@ -187,13 +186,13 @@ export default {
         color #b6b6b6
         font-size 28px
   .personDetail
-    margin-bottom 300px
-    padding 0 42px
+    padding 0 30px
+    width 100%
+    padding-bottom 300px
     .item
       color #252525
       font-size 30px
       margin-top 25px
-      // width 33%
       img
         width 209px
         height 245px
@@ -201,10 +200,11 @@ export default {
         margin-top 15px
   .btm
     position fixed
-    bottom 10px
+    padding-bottom 10px
+    bottom 0
     width 100%
     font-size 35px
-    // height 200px
+    background-color #ffffff
   .created
     width 690px
     background-color #5aa967
@@ -218,6 +218,6 @@ export default {
     height 90px
     color #5aa967
     margin-top 14px
-    border 1px solid #5aa967
+    border 2px solid #5aa967
     border-radius 10px
 </style>

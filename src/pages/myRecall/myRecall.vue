@@ -4,8 +4,8 @@
     <div class="wrapper ">
       <div class="itemWrapper  row van-hairline--bottom" v-for="(item,index) in list" :key="index">
         <div class="previewCon  row a-c" @click="show(item.id)">
-          <div class="preview">预览</div>
-          <div class="previewTip"></div>
+          <div class="preview" :style="{'color':color}">预览</div>
+          <div class="previewTip" :style="{'border-color':color}"></div>
         </div>
         <div class="titleImgCon">
           <img class="titleImg" :src="item.imgurl" alt="" v-if="item.tempid != 0">
@@ -20,24 +20,30 @@
               <div class="text">{{itemTwo.lstr  }}</div>
             </div>
           </div>
-          <div class="flowerCon  row a-c">
-            <img class="flower" src="./flower.png" alt="">
-            <div>{{item.flower}}</div>
-            <img class="msg" src="./msg.png" alt="">
-            <div>{{item.msgcount}}</div>
-            <img class="msg" src="./look.png" alt="">
-            <div>{{item.look}}</div>
+          <div class="flowerCon  row a-c" :style="{'color':color}">
+            <div class="iconWrap">
+              <img class="msg" src="./flower.png" alt="" :style="{'background-color':color}">
+            </div>
+            <div :style="{'color':color}">{{item.flower}}</div>
+            <div class="iconWrap">
+              <img class="msg" src="./msg.png" alt="" :style="{'background-color':color}">
+            </div>
+            <div :style="{'color':color}">{{item.msgcount}}</div>
+            <div class="iconWrap">
+              <img class="msg" src="./look.png" alt=""  :style="{'background-color':color}">
+            </div>
+            <div :style="{'color':color}">{{item.look}}</div>
           </div>
           <div class="row">
-            <div class="diary  row a-c j-c" @click="diary(item.id)">追思日记</div>
-            <div class="setting  row a-c j-c" @click="setting(item.id)">功能设置</div>
+            <div class="diary  row a-c j-c" @click="diary(item.id)" :style="{'background-color':color}">追思日记</div>
+            <div class="setting  row a-c j-c" @click="setting(item.id) " :style="{'background-color':color}">功能设置</div>
           </div>
         </div>
       </div>
       <div class="barBtm"></div>
     </div>
     <div class="btmCon  row j-c ">
-      <div class="btm  row j-c a-c" @click="create">创建追思纪念堂</div>
+      <div class="btm  row j-c a-c" @click="create" :style="{'background-color':color}">创建追思纪念堂</div>
     </div>
     <div class="bar"></div>
   </div>
@@ -50,7 +56,8 @@ export default {
   data() {
     return {
       list: [],
-      noinfo: false
+      noinfo: false,
+      color: localStorage.getItem("color")
 
 
 
@@ -244,15 +251,24 @@ export default {
   font-size: 28px;
   padding-left: 25px;
 }
-.flower {
-  width: 24px;
-  height: 28px;
-  margin-right: 10px;
+
+.iconWrap {
+  display: inline-block;
+  width: 46px;
+  overflow: hidden;
+  margin: 0 10px;
 }
 .msg {
-  height: 21px;
-  margin-left: 45px;
-  margin-right: 10px;
+  width: 36px;
+  /* filter: drop-shadow( 45px 0);
+  -moz-box-filter: drop-shadow( 45px 0);
+  -webkit-box-filter: drop-shadow( 45px 0);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  right: 36px;
+  top: 5px; */
+  background: #5aa967;
 }
 .diary {
   width: 198px;

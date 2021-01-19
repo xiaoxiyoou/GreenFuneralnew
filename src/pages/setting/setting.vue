@@ -39,7 +39,7 @@
     <div class="bar"></div>
     <div class="template   row j-b a-c">
       <div class="text coleorOne">线上留言</div>
-      <van-switch v-model="checked" size="18px" active-color="#5aa967" inactive-color="#eaeaea" @change="onChange()" />
+      <van-switch v-model="checked" size="18px" :active-color=color inactive-color="#eaeaea" @change="onChange()" />
     </div>
     <!-- <div class="bar"></div> -->
 
@@ -71,7 +71,8 @@ export default {
       checked: true,
       deleteWrapper: false,
       ismsg: 0,
-      info:""
+      info:"",
+      color:localStorage.getItem("color") 
 
 
 

@@ -20,8 +20,8 @@
         </div>
       </div>
       <div class="btm row j-b">
-        <div class="reject row j-c a-c" v-if="item.status == 0" @click="_doshare(item.id,2)">拒绝</div>
-        <div class="receive row j-c a-c" v-if="item.status == 0" @click="_doshare(item.id,1)">同意共享</div>
+        <div class="reject row j-c a-c" v-if="item.status == 0" @click="_doshare(item.id,2)" :style="{'background-color':color}">拒绝</div>
+        <div class="receive row j-c a-c" v-if="item.status == 0" @click="_doshare(item.id,1)" :style="{'background-color':color}"> 同意共享</div>
         <div class="alreceive" v-if="item.status == 1">已同意</div>
         <div class="alreject" v-if="item.status == 2">已拒绝</div>
       </div>
@@ -38,6 +38,7 @@ export default {
     return {
       shareList: [],
       noinfoShow: false,
+      color:localStorage.getItem("color") 
 
 
 
@@ -163,6 +164,7 @@ export default {
       height 90px
       background-color #87ad8d
       border-radius 10px
+      opacity 0.9
     .receive
       color #ffffff
       width 425px

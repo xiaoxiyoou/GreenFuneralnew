@@ -104,7 +104,7 @@
           </div>
         </div>
       </div>
-      <div class="bar"></div>
+      <!-- <div class="bar"></div> -->
       <van-popup v-model="pickerPeople" position="bottom">
         <van-picker show-toolbar title="请选择资质" :columns="catidName" @cancel="onCancel" @confirm="onConfirm" :loading="loading" />
       </van-popup>
@@ -414,7 +414,7 @@ export default {
           capital: this.capital,
           personnel: this.personnel,
           Qualification: this.coQualification,
-          cateid: 2
+          cateid:this.cocatidCon[this.CompanyIndex]
         }).then(res => {
           console.log('机构注册', res)
           if (res.code == 0) {
@@ -444,16 +444,12 @@ export default {
     // 提交机构
     toMechan() {
       this._companyapiAdd()
-      // this.$router.push({
-      //   path: './mechan'
-      // })
+     
     },
     // 提交人员
     toPerson() {
       this._emceeapiAdd()
-      // this.$router.push({
-      //   path: './person'
-      // })
+ 
     },
 
   },
@@ -472,7 +468,7 @@ export default {
 }
 .con {
   background-color: #f5f5f5;
-  padding-bottom: 3rem;
+  padding-bottom: 126px;
 }
 .top {
   width: 400px;

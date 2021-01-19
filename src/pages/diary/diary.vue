@@ -41,13 +41,13 @@
     <!-- 底部 -->
     <div class="btm col a-c">
       <div class="title  row">
-        <div class="text  row j-c a-c" v-for="(item,index) in title" :key="index" :class="{'textHover':isActive == index}" @click="activeNav(index)">{{item}}</div>
+        <div class="text  row j-c a-c" v-for="(item,index) in title" :key="index" :class="{'textHover':isActive == index}" @click="activeNav(index)" :style="{'background-color':color}">{{item}}</div>
 
       </div>
       <div class="textCon" v-if="isActive">
         <div class="btn  row j-b a-c">
           <div class="cancel">取消</div>
-          <div class="confirm row j-c a-c" @click="confirm">发布</div>
+          <div class="confirm row j-c a-c" @click="confirm" :style="{'background-color':color}">发布</div>
         </div>
         <textarea id="textarea" v-model="remark" @blur="getHeight"></textarea>
       </div>
@@ -74,6 +74,7 @@ var wx = require('weixin-js-sdk')
 export default {
   data() {
     return {
+      color: localStorage.getItem("color"),
       audioMask: false,
       contentCon: false,
       title: ['音频日记', '文本日记'],
@@ -402,10 +403,12 @@ html {
   height: 88px;
   color: #ffffff;
   background-color: #7cb084;
+   opacity: 0.9;
 }
 
 .btm > .title > .textHover {
   width: 50%;
+  opacity: 1;
   height: 88px;
   background-color: #5aa967;
   color: #ffffff;

@@ -7,35 +7,33 @@
       <div class="conmmetWrapper">
         <van-list v-model="loading" :finished="finished" :finished-text="finishedtext" @load="onLoad">
           <div class="item row" v-for="(item,index) in list" :key="index">
-            <img class="avatar" :src="item.headimgurl" alt="">
+            <div>
+              <img class="avatar" :src="item.headimgurl" alt="">
+            </div>
             <div class="content">
               <div class="person row j-b">
                 <div class="name">{{item.nickname}}</div>
                 <div class="startWrapper row  a-c">
                   <div class="text">打分</div>
-                  <div v-if="item.score!=0">
-                    <img src="./../../assets/img/xing.png" alt="" v-for="(itemscore,indexxing) in parseInt(item.score)" :key="indexxing">
-                  </div>
-                  <div v-if=" 5 - item.score!=0">
-                    <img src="./../../assets/img/hui.png" alt="" v-for="(itemscore,indexscore) in 5 - item.score" :key="indexscore">
-                  </div>
-                  <div class="grade">{{item.score}}分</div>
+
+                  <van-rate v-model="item.score" allow-half void-icon="star" void-color="#eee" :color="color" size="15" readonly />
+                  <div class="grade" :style="{'color':color}">{{item.score}}分</div>
                 </div>
               </div>
               <div class="date">{{item.createdate}}</div>
               <div class="des">{{item.intro}}</div>
               <div class="imgWrapper row f-w" v-if="item.imglist.length && item.imglist[0]!= ''">
-                <img class="comImg" :src="itemImg" alt="" v-for="(itemImg,index) in item.imglist.slice(0, 3)" :key="index"  @click="imgPrew(item.imglist.slice(0, 3),index)">
+                <img class="comImg" :src="itemImg" alt="" v-for="(itemImg,index) in item.imglist.slice(0, 3)" :key="index" @click="imgPrew(item.imglist.slice(0, 3),index)">
               </div>
-              <div class="tip van-hairline--top" @click="personList(item.mid)" v-if="item.type==0">对执宾 <span>{{item.title}}</span> 的评价</div>
-              <div class="tip van-hairline--top" @click="mechanDeatil(item.mid)" v-if="item.type==1">对机构 <span>{{item.title}}</span> 的评价</div>
+              <div class="tip van-hairline--top" @click="personList(item.mid)" v-if="item.type==0">对执宾 <span :style="{'color':color}">{{item.title}}</span> 的评价</div>
+              <div class="tip van-hairline--top" @click="mechanDeatil(item.mid)" v-if="item.type==1">对机构 <span :style="{'color':color}">{{item.title}}</span> 的评价</div>
             </div>
           </div>
           <noMessage :noinfoShow="noinfoShow" />
         </van-list>
       </div>
     </div>
-    <div class="btm row j-c a-c" @click="jion">申请加入公示人员/机构</div>
+    <div class="btm row j-c a-c" @click="jion" :style="{'background-color':color}">申请加入公示人员/机构</div>
     <div class="bar"></div>
   </div>
 
@@ -47,6 +45,7 @@ import { ImagePreview } from 'vant';
 export default {
   data() {
     return {
+      color: localStorage.getItem("color"),
       finishedtext: '',
       dropdown: false,
       loading: false,
@@ -70,14 +69,14 @@ export default {
 
   },
   methods: {
-     // 图片预览
-    imgPrew(flag,index) {
+    // 图片预览
+    imgPrew(flag, index) {
       ImagePreview({
         images: flag,
         closeable: true,
-        startPosition:index,
-        closeOnPopstate:true
-        
+        startPosition: index,
+        closeOnPopstate: true
+
       });
     },
 

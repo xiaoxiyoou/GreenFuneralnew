@@ -14,15 +14,15 @@
           <div class="name">{{info.companyname}}</div>
           <div class="startWrapper row  a-c">
             <div class="tip">服务指数</div>
-            <van-rate v-model="star" allow-half void-icon="star" void-color="#eee" color="#1ead55" size="15" />
-            <div class="grade">{{star}}分</div>
+            <van-rate v-model="star" allow-half void-icon="star" void-color="#eee" :color=color size="15" readonly/>
+            <div class="grade" :style="{'color':color}">{{star}}分</div>
           </div>
         </div>
-        <img class="phone" style="width:30px;height:30px" src="../../assets/img/phone.png" alt="" @click.stop="callPhone">
+        <img class="phone" style="width:30px;height:30px" src="../../assets/img/phone.png" alt="" @click.stop="callPhone" :style="{'background-color':color}">
       </div>
       <div class="btmWrapper row a-c j-b">
         <div class="address row a-c">
-          <img src="../../assets/img/dingwei.png" alt="">
+          <img src="../../assets/img/dingwei.png" alt="" :style="{'background-color':color}">
           <div class="des row j-c a-c" @click="address()">{{info.address}}</div>
         </div>
         <div class="distance">{{info.distance}}</div>
@@ -50,8 +50,8 @@
       </div>
     </div>
     <div class="btm row j-c a-c" @click="commentDetail">
-      <img class="" src="../../assets/img/message.png" alt="">
-      <div>市民评价</div>
+      <img class="" src="../../assets/img/message.png" alt="" :style="{'background-color':color}">
+      <div :style="{'color':color}">市民评价</div>
     </div>
   </div>
 
@@ -65,7 +65,8 @@ export default {
       star: 0.1,
       score: '',
       info: [],
-      banner: []
+      banner: [],
+       color:localStorage.getItem("color") 
 
 
 

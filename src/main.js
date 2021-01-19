@@ -21,7 +21,6 @@ import LyTab from 'ly-tab'
 import VueWechatTitle from 'vue-wechat-title'
 Vue.use(VueWechatTitle)
 Vue.use(LyTab)
-
 Vue.prototype.$moment = 'moment'
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
@@ -32,11 +31,9 @@ router.beforeEach((to, from, next) => {
     if (!fromUrl) {
       localStorage.setItem('fromUrl', to.fullPath)
     }
-    if (localStorage.getItem('userid') != "undefined" && localStorage.getItem('userid')!=null ) {
-      // if (localStorage.getItem('userid')&& VueCookies.get('userid')  && localStorage.getItem('token')) {
+    if (localStorage.getItem('userid')  && localStorage.getItem('token') && localStorage.getItem('openid')) {
       next();
     } else {
-     
       next({
         path: '/login'
       })
@@ -46,7 +43,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 router.afterEach(() => {
- share()
+  share()
 })
 
 Vue.filter('moment', function (value, formatString) {

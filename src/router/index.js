@@ -15,7 +15,7 @@ const routes = [{
     name: 'login',
     component: resolve=>(require(['pages/login/login'],resolve)),
     meta: {
-      title: '绿色殡葬',
+      title: '',
       depth: 1
     }
   },
@@ -24,7 +24,7 @@ const routes = [{
     name: 'index',
     component: resolve=>(require(['pages/index/index'],resolve)),
     meta: {
-      title: '绿色殡葬',
+      title: '',
       requireAuth: true,
       depth: 1
     }
@@ -144,7 +144,7 @@ const routes = [{
     name: 'service',
     component: resolve=>(require(['pages/service/service'],resolve)),
     meta: {
-      title: '绿色殡葬',
+      title: '',
       requireAuth: true,
       depth: 1
     }
@@ -274,7 +274,7 @@ const routes = [{
     name: 'product',
     component: resolve=>(require(['pages/product/product'],resolve)),
     meta: {
-      title: '绿色殡葬',
+      title: '',
       requireAuth: true,
       depth: 1
     },
@@ -557,6 +557,30 @@ const routes = [{
     component: resolve=>(require(['pages/searchHall/searchHall'],resolve)),
     meta: {
       title: '搜索纪念堂',
+      requireAuth: true,
+      depth: 1
+    },
+
+  },
+  {
+    path: '/home',
+    name: 'home',
+    // component: resolve=>(require(['pages/home/home'],resolve)),
+    component: resolve=>(require(['pages/home/home'],resolve)),
+    meta: {
+      title: '',
+      requireAuth: true,
+      depth: 1
+    },
+
+  },
+  {
+    path: '/Regist',
+    name: 'Regist',
+    // component: resolve=>(require(['pages/Regist/Regist'],resolve)),
+    component: resolve=>(require(['pages/Regist/Regist'],resolve)),
+    meta: {
+      title: '申请加入',
       requireAuth: true,
       depth: 1
     },

@@ -31,13 +31,13 @@
       <div class="personContent">
         <div class="person row a-c" @click="pesonShow" v-for="(item,index) in list" :key="index">
           <img class="portrait" :src="item.imgurl" alt="" v-if="item.imgurl" />
-          <img class="portrait" src="./person.png" alt="" v-else />
+          <img class="portrait" :style="{'background-color':color}" src="./person.png" alt="" v-else />
           <div class="item">
             <div class="name">{{item.name}}</div>
             <div class="age">{{item.shengri}}-{{item.jiri}}</div>
             <div class="des">{{item.lstr}}</div>
             <div class="add row a-c">
-              <img class="" src="./location.png" alt="" />
+              <img class="" src="./location.png" alt="" :style="{'background-color':color}" />
               <div class="address" v-if="item.buryaddr">安葬地：{{item.buryaddr}}</div>
               <div v-else>安葬地：暂未完善</div>
             </div>
@@ -48,7 +48,7 @@
             <div class="infolife" v-if="info.life">逝者生平：{{info.life}}</div>
             <div class="fallname" style="text-align:right;margin-top:10px" v-if="info.fallname">追思人：{{info.fallname}}</div>
           </div>
-          <img class="memory" src="./memory.png" alt="" v-if="info.imglist">
+          <img class="memory" src="./memory.png" alt="" v-if="info.imglist" :style="{'background-color':color}">
           <div class="imgList">
             <ul class="left-waterfall" ref="left">
               <li class="item" v-for="(item,index) in leftItems" :key="index">
@@ -62,13 +62,13 @@
             </ul>
           </div>
           <div class="clear"></div>
-          <img class="memory" src="./shop.png" alt="">
+          <img class="memory" src="./shop.png" alt="" :style="{'background-color':color}">
           <div class="shop-wrapper">
             <div class="title">{{shop.shopname}}</div>
             <div class="item row a-c">
               <img class="badge" src="./jzb_icon.png" alt="" v-if="zizhi == 4">
               <img class="badge" src="./zizuan_icon.png" alt="" v-if="shop.shopgrade_id == 7">
-              <div class="tip">---为您提供全程殡葬礼仪服务</div>
+              <div class="tip" :style="{'color':color}">---为您提供全程殡葬礼仪服务</div>
             </div>
             <div class="content row a-c">
               <div class="shopimgCon">
@@ -84,7 +84,7 @@
                 <div>{{shop.address}}</div>
               </div>
             </div>
-            <div class="more" @click="shopDetail">查看更多服务商家信息>></div>
+            <div class="more" @click="shopDetail" :style="{'color':color}">查看更多服务商家信息>></div>
           </div>
           <img class="logo" :src="shop.imglogo" alt="">
 
@@ -92,8 +92,8 @@
           <div class="tipTitle">讣语Love温馨提示</div>
           <div class="tipText">尽孝要趁早，挚爱等不了。希望所有浏览这封讣告的朋友们，在离开页面之后，一定不要忘了，给自己的父母打一个电话发一条微信，表达你的爱，或直接去到他的面前，别辜负时光，因为尽孝等不了。
           </div>
-          <div style="baccground:#eeeeee;width:100%">
-            <van-notice-bar color="#5aa967" background="#eeeeee" speed='50' left-icon="http://b.fuyulove.com/wisdom/img/tip.png">
+          <div :style="{'width':'100%'}">
+            <van-notice-bar :color=color :background=color speed='50' left-icon="http://b.fuyulove.com/wisdom/img/tip1.png">
               和父母一起锻炼身体，越早越好！ 父母虽然坚强，其实很想和你谈谈心，别让他们憋在心里！ 定期为爸妈预约体检，不做一定会后悔! 没有什么灵丹偏方，该吃的药提醒他们按时吃！ 有空常回家，看看他们都吃些什么，是否健康！ 为年迈的父母洗头，就像你小时候他们为你做的一样！ 好好陪父母做一顿饭，享受温情的时光！
             </van-notice-bar>
           </div>
@@ -128,35 +128,36 @@
     </div>
     <div class="btm row j-a a-c">
       <div class="item col a-c" @click="edit" v-if="info.userid == localuserid">
-        <img class="" src="./set.png" alt="" />
-        <div class="text">设置</div>
+        <img class="" src="./set.png" alt="" :style="{'background-color':color}" />
+        <div class="text" :style="{'color':color}">设置</div>
       </div>
       <div class="item col a-c" @click="create" v-else>
-        <img class="" src="./make.png" alt="" />
-        <div class="text">我要制作</div>
+        <img class="" src="./make.png" alt="" :style="{'background-color':color}" />
+        <div class="text" :style="{'color':color}">我要制作</div>
       </div>
       <div class="item col a-c" @click="notoShareShow()" v-if="info.userid == localuserid">
         <img class="" src="./noshare.png" alt="" />
         <div class="text" style="color:#b0b0b0">申请共享</div>
       </div>
       <div class="item col a-c" @click="toShareShow(true)" v-else>
-        <img class="" src="./toshare.png" alt="" />
-        <div class="text">申请共享</div>
+        <img class="" src="./toshare.png" alt="" :style="{'background-color':color}" />
+        <div class="text" :style="{'color':color}">申请共享</div>
       </div>
 
       <div class="item col a-c" @click="share">
-        <img class="" src="./share.png" alt="" />
-        <div class="text">转发分享</div>
+        <img class="" src="./share.png" alt="" :style="{'background-color':color}" />
+        <div class="text" :style="{'color':color}">转发分享</div>
       </div>
     </div>
     <!-- 申请共享 -->
     <van-popup v-model="show" class="shareWrapper col a-c">
-      <div class="title row a-c j-c">共享纪念堂申请</div>
+      <div class="title row a-c j-c" :style="{'background-color':color}">共享纪念堂申请</div>
       <div class="text row a-c j-c" v-if="sharemsgCount">嗨～您收到{{sharemsgCount}}条来自亲友的共享纪念堂申请</div>
       <div class="text row a-c j-c" v-else>您暂时未收到新的共享纪念堂申请消息</div>
       <div class="text row a-c j-c" v-if="sharemsgCount">请尽快审核</div>
       <div class="check row a-c j-c">共享后亲友也可以收到纪念日提醒功能</div>
-      <div class="btn row a-c j-c" @click="look">查看</div>
+      <div class="btn row a-c j-c" @click="look" 
+:style="{'background-color':color}">查看</div>
     </van-popup>
     <!-- 祭祀流程 -->
     <van-popup v-model="remind" class="remindWrapper col a-c">
@@ -173,7 +174,7 @@
         2、祭奠前请放下与祭奠无关的工作，如吃东西、喝水、吸烟等
       </div>
       <div class="check" style="margin-bottom:8px">3、祭奠后如方便，请叩拜或起立默哀一分钟</div>
-      <div class="btn row a-c j-c" @click="remindShow">知道了</div>
+      <div class="btn row a-c j-c" @click="remindShow" :style="{'background-color':color}">知道了</div>
     </van-popup>
     <!-- 留言 -->
     <van-popup v-model="msg" position="bottom" class="msgWrapper col a-c" closeable>
@@ -195,8 +196,8 @@
             </div>
             <div class="btmItem  row a-c" v-if="info.userid == localuserid">
               <div class="date">{{item.createdate |moment}}</div>
-              <div class="dalete" v-if="info.userid == localuserid" @click="_msgdel(item.id)">删除留言</div>
-              <div class="btn  row j-c a-c" v-if="info.userid == localuserid && !item.reply" @click="_msgreply(item.id)">回复</div>
+              <div class="dalete" v-if="info.userid == localuserid" @click="_msgdel(item.id)" :style="{'color':color}">删除留言</div>
+              <div class="btn  row j-c a-c" v-if="info.userid == localuserid && !item.reply" @click="_msgreply(item.id)" :style="{'background-color':color}">回复</div>
             </div>
             <div class="replay" v-if="item.reply">
               <div class="text">
@@ -207,7 +208,7 @@
         </div>
       </div>
       <div class="bar"></div>
-      <div class="btn row a-c j-c" @click="_msgadd">写留言</div>
+      <div class="btn row a-c j-c" @click="_msgadd" :style="{'color':color,'border-color': color}">写留言</div>
     </van-popup>
     <!-- 来访记录 -->
     <van-popup v-model="visit" position="bottom" class="visit col a-c" closeable>
@@ -218,7 +219,7 @@
         <div class="item row a-c j-b" v-for="(item, index) in visitCon" :key="index">
           <img class="avater" :src="item.headimgurl" alt="" />
           <div class="name">{{item.nickname}}</div>
-          <div class="des">{{item.title}}</div>
+          <div class="des" :style="{'color':color}">{{item.title}}</div>
           <div class="time">{{item.createdate}}</div>
         </div>
       </div>
@@ -231,7 +232,7 @@
       <div class="btmMsg van-hairline--top">
         <div class="item row j-b a-c">
           <div class="text">逝者生平</div>
-          <div class="btn row a-c j-c" @click="lifeSelect">选择生平模板</div>
+          <div class="btn row a-c j-c" @click="lifeSelect" :style="{'background-color':color}">选择生平模板</div>
         </div>
         <textarea class="life" name="life" v-model="sharelife" @blur="getHeight"></textarea>
         <div class="item row j-b a-c">
@@ -251,7 +252,7 @@
           </div>
         </div>
         <div class="btmCon col j-c a-c" @click="_shareCard()">
-          <div class="sharebtm row j-c a-c">提交</div>
+          <div class="sharebtm row j-c a-c" :style="{'background-color':color}">提交</div>
         </div>
       </div>
     </van-popup>
@@ -272,8 +273,10 @@
         </div>
         <div v-else>免费</div>
         <div class="row item">
-          <div class="preview row j-c a-c" @click="preview">预览</div>
-          <div class="send row j-c a-c" @click="sendflower()">送出</div>
+          <div class="preview row j-c a-c" @click="preview" 
+:style="{'color':color,'border-color': color}">预览</div>
+          <div class="send row j-c a-c" @click="sendflower()" 
+:style="{'background-color':color}">送出</div>
         </div>
       </div>
     </van-popup>
@@ -316,28 +319,28 @@
         </div>
         <div v-else>免费</div>
         <div class="row item">
-          <div class="preview row j-c a-c" @click="previewPro">预览</div>
-          <div class="send row j-c a-c" @click="sendtribute(false)">送出</div>
+          <div class="preview row j-c a-c" @click="previewPro" :style="{'color':color,'border-color': color}">预览</div>
+          <div class="send row j-c a-c" @click="sendtribute(false)" :style="{'background-color':color}">送出</div>
         </div>
       </div>
     </van-popup>
     <!-- 写留言 -->
     <van-popup v-model="msgadd" class="remindWrapper col a-c">
-      <div class="title row a-c j-c">请输入留言赠与</div>
+      <div class="title row a-c j-c" :style="{'background-color':color}">请输入留言赠与</div>
       <textarea class="msgadd" placeholder="请输入内容" v-model="remark" @blur="getHeight"></textarea>
       <div class="sendbtn row j-b">
-        <div class="sendbtntip" @click="sendbtntip">点我换一句</div>
-        <div class="sendcustom" @click="sendcustom">自定义留言</div>
+        <div class="sendbtntip" @click="sendbtntip" :style="{'color':color,'border-color': color}">点我换一句</div>
+        <div class="sendcustom" @click="sendcustom" :style="{'color':color}">自定义留言</div>
       </div>
       <div class="sendNum">{{remark.length}}/50</div>
-      <div class="btn row a-c j-c" @click="msgaddBtn">提交</div>
+      <div class="btn row a-c j-c" @click="msgaddBtn" :style="{'background-color':color}">提交</div>
     </van-popup>
     <!-- 回复留言 -->
     <van-popup v-model="msgreply" class="remindWrapper col a-c">
-      <div class="title row a-c j-c">请输入回复内容</div>
+      <div class="title row a-c j-c" :style="{'background-color':color}">请输入回复内容</div>
       <textarea class="msgadd" placeholder="请输入内容" v-model="reply" @blur="getHeight"></textarea>
       <div class="sendNum" style="margin-top:10px">{{reply.length}}/50</div>
-      <div class="btn row a-c j-c" @click="msgreplyBtn">提交</div>
+      <div class="btn row a-c j-c" @click="msgreplyBtn" :style="{'background-color':color}">提交</div>
     </van-popup>
     <!-- 逝者生平 -->
     <van-popup v-model="lifeshow" position="bottom" :style="{ height: '80%' }" close-icon="close" closeable>
@@ -351,7 +354,7 @@
             <div class="itemText">
               {{item.desn}}
             </div>
-            <div class="selectedTpl" @click="tempSelect(index)">选用此模板</div>
+            <div class="selectedTpl" @click="tempSelect(index)" :style="{'background-color':color}">选用此模板</div>
           </div>
         </div>
       </div>
@@ -369,6 +372,8 @@ import { Toast, ImagePreview } from 'vant'
 export default {
   data() {
     return {
+      // color: localStorage.getItem("color"),
+      color: "#0567a6",
       title: '',
       imgbg: '',
       lifeImg: [],
@@ -620,7 +625,7 @@ export default {
         images: [flag],
         closeable: true,
         showIndex: false,
-        closeOnPopstate:true
+        closeOnPopstate: true
       });
     },
     // 分享
@@ -1497,9 +1502,9 @@ export default {
       width 710px
       height 90px
       border-radius 10px !important
-      border 1px solid #5aa967
+      border 2px solid #5aa967
       position fixed
-      bottom 1px
+      bottom 10px
       background-color #ffffff
   .toShare
     height 666px
@@ -1546,11 +1551,11 @@ export default {
       // overflow-x scroll
       // overflow-y hidden
       .active
-        border 1px solid #5aa967 !important
+        border 5px solid #eaeaea !important
       .item
         margin-bottom 50px
         // margin-right 10px
-        border 1px solid #eaeaea
+        border 2px solid #eaeaea
         width 134px
         height 178px
         color #b8b8b8
@@ -1573,7 +1578,7 @@ export default {
           width 107px
           height 43px
           border-radius 10px
-          border 1px solid #5aa967
+          border 2px solid #5aa967
           color #5aa967
         .send
           margin-left 31px
@@ -1834,11 +1839,14 @@ export default {
   width: 100%;
   margin-top: 30px;
   height: 27.5px !important;
-  background-color: #eeeeee !important;
   padding: 0 !important;
 }
 .van-notice-bar__left-icon {
   width: 27.5px;
+  height: 27.5px;
+}
+.van-notice-bar__wrap {
+  background-color: #f5f5f5 !important;
   height: 27.5px;
 }
 .van-notice-bar__left-icon > img {

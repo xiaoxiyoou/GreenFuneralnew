@@ -12,24 +12,24 @@
               <div class="name">{{item.companyname}}</div>
               <div class="startWrapper row  a-c">
                 <div class="tip">服务指数</div>
-                <van-rate v-model="item.score" allow-half void-icon="star" void-color="#eee" color="#1ead55" size="15" />
-                <div class="grade">{{item.score}}分</div>
+                <van-rate v-model="item.score" allow-half void-icon="star" void-color="#eee" :color="color"  size="15" readonly/>
+                <div class="grade" :style="{'color':color}">{{item.score}}分</div>
               </div>
               <div class="personbtm row a-c">
-                <img src="./../../assets/img/dingwei.png" alt="">
+                <img src="./../../assets/img/dingwei.png" alt="" :style="{'background-color':color}">
                 <div class="des row j-c a-c" v-if="item.address">{{item.address}}</div>
                 <div class="des row j-c a-c" v-else>暂未完善</div>
               </div>
             </div>
           </div>
           <div class="phoneWrapper col j-c a-c">
-            <img class="phone" src="./../../assets/img/phoneBig.png" alt="" @click.stop="callPhone(item.telephone)">
+            <img class="phone" src="./../../assets/img/phoneBig.png" alt="" @click.stop="callPhone(item.telephone)" :style="{'background-color':color}">
           </div>
         </div>
         <noMessage :noinfoShow="noinfoShow" />
       </van-list>
     </div>
-    <div class="btm row j-c a-c" @click="jion">申请加入公示人员/机构</div>
+    <div class="btm row j-c a-c" @click="jion" :style="{'background-color':color}">申请加入公示人员/机构</div>
     <div class="bar"></div>
   </div>
 
@@ -50,6 +50,7 @@ export default {
       page: 1,
       size: 10,
       key: '',
+      color: localStorage.getItem("color")
 
 
 
@@ -127,6 +128,10 @@ export default {
         }
       })
 
+    },
+     callPhone(telephone) {
+      console.log(telephone)
+      window.location.href = 'tel:' + telephone
     },
 
   },

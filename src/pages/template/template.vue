@@ -3,7 +3,7 @@
 
     <div class="template row f-w">
       <div class="template-wrapper" v-for="(item,index) in list" :key="index" @click="select(item.id,item.imgurl)">
-        <img class="tip" src="./selected.png" alt="" v-if="item.id == isActive">
+        <img class="tip" src="./selected.png" alt="" v-if="item.id == isActive" >
         <img class="tip" src="./noSelect.png" alt="" v-else>
         <div class="item">
           <img class="banner" :src="item.imgurl" alt="">
@@ -19,8 +19,8 @@
     </div>
 
     <div class="btm row">
-      <div class="preview row j-c a-c" @click="show2">预览模板</div>
-      <div class="confirm row j-c a-c" @click="_uptemplate">确认模板</div>
+      <div class="preview row j-c a-c" @click="show2" :style="{'color':color}">预览模板</div>
+      <div class="confirm row j-c a-c" @click="_uptemplate" :style="{'background-color':color}">确认模板</div>
     </div>
     <upImg :showCrop="showCrop" :fixedNumber="fixedNumber" @cropShow="cropShow" @photoUp="photoUp" />
   </div>
@@ -39,7 +39,8 @@ export default {
       tempidselcted: '',
       fixedNumber: [1, 1.8],
       showCrop: false,
-      tempurl: ''
+      tempurl: '', 
+      color: localStorage.getItem("color")
 
 
 

@@ -6,8 +6,8 @@
       </van-swipe-item>
     </van-swipe>
     <div class="itemWrapper row a-c j-b">
-      <div class="itemContent  row a-c j-b">
-        <div class="item " :class="index==defalutindex?'hoverItem':''" @click="son(item.id,index)" v-for="(item,index) in catlist" :key="index">{{item.name}}</div>
+      <div class="itemContent  row a-c ">
+        <div class="item " :class="index==defalutindex?'hoverItem':''" @click="son(item.id,index)" v-for="(item,index) in catlist.slice(0, 4)" :key="index">{{item.name}}</div>
       </div>
       <img src="./search.png" alt="" @click="searchBar">
     </div>
@@ -158,10 +158,13 @@ export default {
       border-right 1px solid #f5f5f5
       padding-right 10px
       .hoverItem
-        color #1ead55
+        // color #1ead55
         font-size 32px
-        border-bottom 3px solid #1ead55
+        // border-bottom 3px solid #1ead55
         padding-bottom 2px
+        font-weight 700
+      .item 
+        margin-right  35px
       img
         width 22px
         height 11px
@@ -173,15 +176,15 @@ export default {
   .info
     background-color #ffffff
     .item
-      margin 33px 27px 0px 31px
-      padding-bottom 26px
+      margin 23px 30px 0px 30px
+      padding-bottom 23px
       .date
         color #919191
-        font-size 25px
+        font-size 28px
         margin-top 5px
       .tltle
         color #252525
-        font-size 33px
+        font-size 32px
         margin-top 15px
         padding-bottom 15px
       .imgWrapper

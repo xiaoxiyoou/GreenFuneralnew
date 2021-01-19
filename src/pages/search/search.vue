@@ -15,7 +15,7 @@
         <noMessage :noinfoShow="noinfoShow" />
       </van-list>
     </div>
-    <div class="btm row j-c a-c" @click="jion">申请加入公示人员/机构</div>
+    <div class="btm row j-c a-c" @click="jion" :style="{'background-color':color}">申请加入公示人员/机构</div>
   </div>
 
 </template>
@@ -37,7 +37,7 @@ export default {
       size: 10,
       key: '',
       count: '',
-
+      color: localStorage.getItem("color")
 
 
     }

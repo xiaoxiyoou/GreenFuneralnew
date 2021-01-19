@@ -2,32 +2,32 @@
   <div class="container">
     <div class="top row a-c j-b">
       <div class="text">此功能在公众号中提醒，请持续关注我们</div>
-      <div class="btn row j-c a-c" @click="qrWrapperShow(true)">+关注</div>
+      <div class="btn row j-c a-c" @click="qrWrapperShow(true)" :style="{'background-color':color}">+关注</div>
     </div>
     <div class="bar"></div>
     <div class="template  row j-b a-c">
       <div class="text">逝者忌日提醒</div>
-      <van-switch v-model="checked1" size="18px" active-color="#5aa967" inactive-color="#eaeaea" @change="onChange('rem_jr')" />
+      <van-switch v-model="checked1" size="18px" :active-color=color inactive-color="#eaeaea" @change="onChange('rem_jr')" />
     </div>
     <div class="template row j-b a-c">
       <div class="text">逝者生日提醒</div>
-      <van-switch v-model="checked2" size="18px" active-color="#5aa967" inactive-color="#eaeaea"  @change="onChange('rem_sr')" />
+      <van-switch v-model="checked2" size="18px" :active-color=color inactive-color="#eaeaea"  @change="onChange('rem_sr')" />
     </div>
     <div class="template  row j-b a-c">
       <div class="text">清明节提醒</div>
-      <van-switch v-model="checked3" size="18px" active-color="#5aa967" inactive-color="#eaeaea" @change="onChange('rem_qm')"/>
+      <van-switch v-model="checked3" size="18px" :active-color=color inactive-color="#eaeaea" @change="onChange('rem_qm')"/>
     </div>
     <div class="template  row j-b a-c">
       <div class="text">中元节提醒</div>
-      <van-switch v-model="checked4" size="18px" active-color="#5aa967" inactive-color="#eaeaea" @change="onChange('rem_zy')"/>
+      <van-switch v-model="checked4" size="18px" :active-color=color inactive-color="#eaeaea" @change="onChange('rem_zy')"/>
     </div>
     <div class="template  row j-b a-c">
       <div class="text">寒衣节提醒</div>
-      <van-switch v-model="checked5" size="18px" active-color="#5aa967" inactive-color="#eaeaea" @change="onChange('rem_hy')" />
+      <van-switch v-model="checked5" size="18px" :active-color=color inactive-color="#eaeaea" @change="onChange('rem_hy')" />
     </div>
     <div class="template  row j-b a-c">
       <div class="text">春节提醒</div>
-      <van-switch v-model="checked6" size="18px" active-color="#5aa967" inactive-color="#eaeaea" @change="onChange('rem_cj')"/>
+      <van-switch v-model="checked6" size="18px" :active-color=color inactive-color="#eaeaea" @change="onChange('rem_cj')"/>
     </div>
 
     <div class="qrWrapper" v-if="qrWrapper">
@@ -54,7 +54,8 @@ export default {
       checked5: true,
       checked6: true,
       qrWrapper: false,
-      info: []
+      info: [],
+      color:localStorage.getItem("color") 
 
     }
   },

@@ -37,9 +37,9 @@
       </div>
       <div class="bar"></div>
 
-      <div class="btmCon col j-c a-c" >
-        <div class="btm row j-c a-c" @click="toPerson">创建纪念堂</div>
-        <div class="btm row j-c a-c" @click="myRecall">我的纪念堂</div>
+      <div class="btmCon col j-c a-c">
+        <div class="btm row j-c a-c" @click="toPerson" :style="{'background-color':color}">创建纪念堂</div>
+        <div class="btm row j-c a-c" @click="myRecall" :style="{'background-color':color}">我的纪念堂</div>
       </div>
       <!-- <div class="btmCon row j-c a-c" v-if="mechan"  @click="toMechan">
         <div class="btm row j-c a-c">确认提交</div>
@@ -57,6 +57,7 @@ import { Toast } from 'vant';
 export default {
   data() {
     return {
+      color: localStorage.getItem("color"),
       datetime: false,
       minDate: new Date(1790, 0, 1),
       maxDate: new Date(2025, 10, 1),
@@ -130,7 +131,7 @@ export default {
         path: './mechan'
       })
     },
-      myRecall() {
+    myRecall() {
       this.$router.push({
         path: './myRecall'
       })
@@ -253,10 +254,10 @@ export default {
   height: 61px;
   overflow: hidden;
   border-radius: 10px;
-  border: 1px solid #5aa967;
+  border: 2px solid #1b1b1b;
   background-color: #ffffff;
   margin-top: 36px;
-  color: #5aa967;
+  color: #1b1b1b;
 }
 
 .tabDouble {
@@ -265,7 +266,7 @@ export default {
   height: 61px;
 }
 .hover {
-  background-color: #5aa967;
+  background-color: #575757;
   color: #ffffff;
 }
 .peopleMsg {

@@ -4,7 +4,7 @@
       <van-cell-group>
         <van-cell :title="item.name" clickable @click="radionum(item.url)" v-for="(item,index) in list" :key="index">
           <template #right-icon>
-            <van-radio :name="item.url" checked-color="#5aa967" />
+            <van-radio :name="item.url" :checked-color=color />
           </template>
         </van-cell>
       </van-cell-group>
@@ -19,8 +19,8 @@ export default {
     return {
       radio: 0,
       list: [],
-      musicurl: []
-
+      musicurl: [],
+      color: localStorage.getItem("color")
 
 
     }

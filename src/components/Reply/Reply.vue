@@ -6,7 +6,7 @@
       <div class="title row a-c j-c">请输入回复内容</div>
       <textarea class="msgadd" placeholder="请输入内容" v-model="reply" @blur="getHeight"></textarea>
       <div class="sendNum" style="margin-top:10px">{{reply.length}}/50</div>
-      <div class="btn row a-c j-c" @click="msgreplyBtn">提交</div>
+      <div class="btn row a-c j-c" @click="msgreplyBtn" :style="{'background-color':color}">提交</div>
     </div>
   </div>
 </template>
@@ -16,7 +16,8 @@ export default {
   name: "Reply",
   data() {
     return {
-      reply: ''
+      reply: '',
+      color:localStorage.getItem("color") 
 
     }
   },
@@ -27,6 +28,7 @@ export default {
     }
   },
   methods: {
+    
     // 解决输入框高度bug不稳定问题
     getHeight() {
       document.body.scrollTop = 0
