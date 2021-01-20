@@ -39,17 +39,17 @@ export default {
       banner: [],
       userinfo: '',
       orginfo: '',
-      color:localStorage.getItem("color")
-      
+      color: localStorage.getItem("color")
+
 
 
     }
   },
   mounted() {
     document.body.scrollTop = document.documentElement.scrollTop = 0
+    this._serviceInfo()
     this._selfDetail()
     sessionStorage.setItem('sid', this.$route.query.sid)
-    this._serviceInfo()
 
   },
   methods: {
@@ -58,9 +58,8 @@ export default {
         console.log('功能', res)
         this.info = res.data.info
         this.orginfo = res.data.orginfo
-        this.color = this.info.color
-        // localStorage.setItem("color", this.orginfo.color )
-        localStorage.setItem("color", this.orginfo.color||"#0567a6" )
+
+        localStorage.setItem("color", this.orginfo.color || "#52aa5e")
         this.list = res.data.list
         this.banner = this.info.banner
 

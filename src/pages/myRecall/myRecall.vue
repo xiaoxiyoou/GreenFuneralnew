@@ -21,18 +21,12 @@
             </div>
           </div>
           <div class="flowerCon  row a-c" :style="{'color':color}">
-            <div class="iconWrap">
-              <img class="msg" src="./flower.png" alt="" :style="{'background-color':color}">
-            </div>
-            <div :style="{'color':color}">{{item.flower}}</div>
-            <div class="iconWrap">
-              <img class="msg" src="./msg.png" alt="" :style="{'background-color':color}">
-            </div>
-            <div :style="{'color':color}">{{item.msgcount}}</div>
-            <div class="iconWrap">
-              <img class="msg" src="./look.png" alt=""  :style="{'background-color':color}">
-            </div>
-            <div :style="{'color':color}">{{item.look}}</div>
+            <img class="msg" src="./flower.png" alt="" :style="{'background-color':color}">
+            <div class="txt" :style="{'color':color}">{{item.flower}}</div>
+            <img class="msg" src="./msg.png" alt="" :style="{'background-color':color}">
+            <div class="txt" :style="{'color':color}">{{item.msgcount}}</div>
+            <img class="msg" src="./look.png" alt="" :style="{'background-color':color}">
+            <div class="txt" :style="{'color':color}">{{item.look}}</div>
           </div>
           <div class="row">
             <div class="diary  row a-c j-c" @click="diary(item.id)" :style="{'background-color':color}">追思日记</div>
@@ -252,23 +246,14 @@ export default {
   padding-left: 25px;
 }
 
-.iconWrap {
-  display: inline-block;
-  width: 46px;
-  overflow: hidden;
-  margin: 0 10px;
-}
+
 .msg {
   width: 36px;
-  /* filter: drop-shadow( 45px 0);
-  -moz-box-filter: drop-shadow( 45px 0);
-  -webkit-box-filter: drop-shadow( 45px 0);
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  right: 36px;
-  top: 5px; */
+  margin-right: 10px;
   background: #5aa967;
+}
+.txt{
+  margin-right: 30px;
 }
 .diary {
   width: 198px;

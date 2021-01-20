@@ -29,7 +29,7 @@ export const view = (params) => ajax(URL + 'Action/MemorApi',params)
 // 编辑
 export const edit = (params) => ajax(URL + 'Action/MemorApi?action=edit',params,'POST')
 // 获取鲜花和贡品
-export const prolist = (params) => ajax(URL + 'Action/MemorApi?action=prolist',params,'POST')
+export const prolist = (params) => ajax(URL + 'Action/MemorApi', params)
 // 送花和送贡品
 export const giveflower = (params) => ajax(URL + '/Action/MemorApi?action=give',params,'POST')
 // 留言数据

@@ -3,7 +3,7 @@
   <div class="remindWrapper" v-if="msgreply">
     <div class="mask" @click="msgreplyShow(false)"></div>
     <div class="item col a-c">
-      <div class="title row a-c j-c">请输入回复内容</div>
+      <div class="title row a-c j-c" :style="{'background-color':color}">请输入回复内容</div>
       <textarea class="msgadd" placeholder="请输入内容" v-model="reply" @blur="getHeight"></textarea>
       <div class="sendNum" style="margin-top:10px">{{reply.length}}/50</div>
       <div class="btn row a-c j-c" @click="msgreplyBtn" :style="{'background-color':color}">提交</div>

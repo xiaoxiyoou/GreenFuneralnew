@@ -15,36 +15,36 @@
         <div class="saoCon">
           <img class="sao" src="./sao.png" alt="" />
         </div>
-        <div class="intro" @click="guestLogin" v-if="isfyl">执宾入口</div>
+        <div class="intro" @click="guestLogin" v-if="isfyl" :style="{'background-color':color}">执宾入口</div>
       </div>
     </div>
     <div class="navbar row j-a">
       <div class="item col a-c j-c" @click="myCollection">
         <div>
-          <img class="" src="./collction.png" alt="" />
+          <img class="" src="./collction.png" alt="" :style="{'background-color':color}" />
         </div>
         <div class="text">我的收藏</div>
       </div>
       <div class="item col a-c j-c" @click="myBrowsing">
         <div>
-          <img class="" src="./eye.png" alt="" />
+          <img class="" src="./eye.png" alt="" :style="{'background-color':color}"/>
         </div>
         <div class="text">最近浏览</div>
       </div>
       <div class="item col a-c j-c" @click="myEvaluate">
         <div>
-          <img class="" src="./comment.png" alt="" />
+          <img class="" src="./comment.png" alt="" :style="{'background-color':color}"/>
         </div>
         <div class="text">评价记录</div>
       </div>
       <div class="item col a-c j-c" @click="myMessage">
         <div>
-          <img class="" src="./msg.png" alt="" />
+          <img class="" src="./msg.png" alt="" :style="{'background-color':color}" />
         </div>
         <div class="text">留言管理</div>
       </div>
       <div class="item col a-c j-c" @click="deathManage">
-        <img class="" src="./remind.png" alt="" />
+        <img class="" src="./remind.png" alt="" :style="{'background-color':color}"/>
         <div class="text">忌日管理</div>
       </div>
     </div>
@@ -80,7 +80,7 @@ import { personCenterlimit, getuserinfo, selfDetail } from 'api/index'
 export default {
   data() {
     return {
-
+      color: localStorage.getItem("color"),
       userinfo: '',
       isfyl: 0,
       emcee: 0,

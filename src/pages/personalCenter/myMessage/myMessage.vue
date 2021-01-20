@@ -1,22 +1,27 @@
 <template>
   <div class="container">
     <div class="title-wrapper row van-hairline--bottom">
-      <div class="item row col a-c j-c" v-for="(item,index) in title" :key="index" :class="{'active':isActive==index}" @click="Active(index)">{{item}}</div>
+      <div class="item  col a-c j-c" v-for="(item,index) in title" :key="index" :class="{'active':isActive==index}" @click="Active(index)" :style="{'background-color':color}">
+      </div>
     </div>
+    <div class="titleText row">
+      <div class="titleTextDeatail col a-c j-c" v-for="(item,index) in title" :key="index" :class="{'active':isActive==index}" @click="Active(index)"> {{item}}</div>
+    </div>
+
     <!--我的留言  -->
     <div class="msgWrapper" v-if="isActive">
       <div class="item  row j-b" v-for="(item,index) in list" :key="index">
         <img class="avater" :src="item.headimgurl" alt="" />
         <div class="info">
           <div class="msgname">
-            <div class="name">{{item.nickname}}</div>
+            <div class="name" :style="{'color':color}">{{item.nickname}}</div>
             <div class="text">
               {{item.remark}}
             </div>
           </div>
           <div class="btmItem  row j-b">
             <div class="date">{{item.createdate |moment}}</div>
-            <div class="dalete" @click="deleteWrapperShow(true,item.id,item.carid)">删除留言</div>
+            <div class="dalete" @click="deleteWrapperShow(true,item.id,item.carid)" :style="{'color':color}">删除留言</div>
           </div>
           <div class="replay " v-if="item.reply">
             <div class="text">
@@ -24,7 +29,7 @@
             </div>
           </div>
           <div class="row a-c showname van-hairline--top">
-            <img class="hand" src="./hand.png" alt="">
+            <img class="hand" src="./hand.png" alt="" :style="{'background-color':color}">
             <div class="" @click="show(item.carid)">{{item.memname}}的追思纪念堂</div>
           </div>
         </div>
@@ -36,15 +41,15 @@
         <img class="avater" :src="item.headimgurl" alt="" />
         <div class="info">
           <div class="msgname">
-            <div class="name">{{item.nickname}}</div>
+            <div class="name" :style="{'color':color}">{{item.nickname}}</div>
             <div class="text">
               {{item.remark}}
             </div>
           </div>
           <div class="btmItem  row">
             <div class="date">{{item.createdate |moment}}</div>
-            <div class="dalete" @click="deleteWrapperShow(true,item.id,item.carid)">删除留言</div>
-            <div class="btn  row j-c a-c" @click="msgreplyShow(true,item.id,item.carid)" v-if="!item.reply">回复</div>
+            <div class="dalete" @click="deleteWrapperShow(true,item.id,item.carid)" :style="{'color':color}">删除留言</div>
+            <div class="btn  row j-c a-c" @click="msgreplyShow(true,item.id,item.carid)" v-if="!item.reply" :style="{'background-color':color}">回复</div>
           </div>
           <div class="replay " v-if="item.reply">
             <div class="text">
@@ -52,7 +57,7 @@
             </div>
           </div>
           <div class="row a-c showname van-hairline--top">
-            <img class="hand" src="./hand.png" alt="">
+            <img class="hand" src="./hand.png" alt="" :style="{'background-color':color}">
             <div class="" @click="show(item.carid)">{{item.memname}}的追思纪念堂</div>
           </div>
         </div>
@@ -84,7 +89,8 @@ export default {
       msgid: '',
       carid: '',
       reply: '',
-      noinfoShow: false
+      noinfoShow: false,
+      color: localStorage.getItem("color"),
 
 
 
@@ -226,12 +232,26 @@ export default {
   bottom 0
   background-color #ffffff
   .title-wrapper
+    position relative
+    z-index 1
     .item
       width 50%
-      color #52aa5e
+      color #575757
       height 88px
+      opacity 0
     .active
+      opacity 1
       background-color #52aa5e
+  .titleText
+    position absolute
+    width 100%
+    top 0
+    .titleTextDeatail
+      width 50%
+      color #575757
+      height 88px
+      z-index 2
+    .active
       color #ffffff
   .item-content
     margin-bottom 25px
@@ -294,7 +314,7 @@ export default {
 .hand {
   width: 40px;
   height: 40px;
-  transform: rotate(90deg);
+  /* transform: rotate(90deg); */
 }
 .showname {
   font-size: 28px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="container col j-b" v-wechat-title="orginfo.orgname">
+  <div class="container col j-b" v-wechat-title="orginfo.orgname" :style="{'background-color':color}">
     <div class="bannerWrapper">
       <van-swipe class="banner" :autoplay="3000" indicator-color="#5aa967">
         <van-swipe-item v-for="(image, index) in banner" :key="index">
@@ -11,34 +11,19 @@
         <div>{{userinfo.nickname}}</div>
       </div>
       <div class="shadow"></div>
-      <div class="center  row a-c j-c" @click="personalCenter">点击进入个人中心</div>
+      <div class="center  row a-c j-c" @click="personalCenter" :style="{'background-color':color}">点击进入个人中心</div>
     </div>
     <div class="item-wrapper row f-w j-c a-c">
       <div class="item col j-c a-c " @click="menu(index,item.link)" v-for="(item,index) in list" :key="index">
         <img :src="item.icon" alt="">
         <div>{{item.name}}</div>
       </div>
-      <!-- <div class="item col j-c a-c border-right" @click="box()">
-        <img src="./icon.png" alt="" />
-        <div>知名品牌</div>
-      </div>
-      <div class="item col j-c a-c  " @click="funeral()">
-        <img src="./person.png" alt="" />
-        <div>殡仪用品</div>
-      </div>
-      <div class="item col j-c a-c border-right" @click="burial()">
-        <img src="./shop.png" alt="" />
-        <div>安葬用品</div>
-      </div>
-      <div class="item col j-c a-c " @click="piety()">
-        <img src="./comment.png" alt="" />
-        <div>孝道用品</div>
-      </div> -->
+
     </div>
     <div class="bar"></div>
-    <div class="btm  col j-c a-c">
-       <img :src="orginfo.logo" v-if="orginfo.logo"  alt="">
-      <img src="./btm.png" v-else  alt="">
+    <div class="btm  col j-c a-c" :style="{'background-color':orginfo.bgcolor}">
+      <img :src="orginfo.logo" v-if="orginfo.logo" alt="">
+      <img src="./btm.png" v-else alt="">
     </div>
   </div>
 </template>
@@ -50,8 +35,8 @@ export default {
       userinfo: '',
       banner: '',
       list: [],
-      orginfo: ''
-
+      orginfo: '',
+      color: localStorage.getItem("color")
 
     }
   },
@@ -80,7 +65,7 @@ export default {
         this.list = res.data.list
         this.banner = this.info.banner
         this.orginfo = res.data.orginfo
-
+         localStorage.setItem("color", this.orginfo.color||"#52aa5e" )
 
       })
     },
@@ -179,7 +164,6 @@ export default {
       color #ffffff
       font-size 30px
   .item-wrapper
-    background-color #52aa5e
     color #ffffff
     font-size 30px
     height 500px

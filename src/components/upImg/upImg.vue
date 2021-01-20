@@ -1,22 +1,22 @@
 <template>
   <!-- 头像上传 -->
   <div class="crop-con" v-if="showCrop">
-    <div class="return row j-c a-c" @click="cropShow(false)">关闭</div>
+    <div class="return row j-c a-c" @click="cropShow(false)" :style="{'background-color':color}">关闭</div>
     <vue-cropper ref="cropper" :img="option.img" :output-size="option.size" :output-type="option.outputType" :info="true" :full="option.full" :fixed="fixed" :fixed-number="fixedNumber" :can-move="option.canMove" :can-scale="option.canScale" :can-move-box="option.canMoveBox" :fixed-box="option.fixedBox" :original="option.original" :auto-crop="option.autoCrop" :auto-crop-width="option.autoCropWidth" :auto-crop-height="option.autoCropHeight" :center-box="option.centerBox" @real-time="realTime" :high="option.high" @img-load="imgLoad" mode="cover"></vue-cropper>
-    <div class="bottom-button row j-a">
-      <div class="selectImg col a-c j-c" @click="uploadImg">
+    <div class="bottom-button row j-a"> 
+      <div class="selectImg col a-c j-c" @click="uploadImg" :style="{'background-color':color}">
         <span class="text">选择</span>
         <span class="text">图片</span>
       </div>
-      <button @click="rotateLeft" class="btn col j-c a-c">
+      <button @click="rotateLeft" class="btn col j-c a-c" :style="{'background-color':color}">
         <div class="word">左旋</div>
         <img class="" src="./left.png" alt="">
       </button>
-      <button @click="rotateRight" class="btn">
+      <button @click="rotateRight" class="btn" :style="{'background-color':color}">
         <div class="word">右旋</div>
         <img class="" src="./right.png" alt="">
       </button>
-      <button @click="finish()" class="btn">
+      <button @click="finish()" class="btn" :style="{'background-color':color}">
         <div class="word">上传</div>
         <img class="" src="./up.png" alt="">
       </button>
@@ -33,6 +33,7 @@ export default {
   name: "upImg",
   data() {
     return {
+      color:localStorage.getItem("color"), 
       fixed: true,
       //裁剪组件的基础配置option
       option: {

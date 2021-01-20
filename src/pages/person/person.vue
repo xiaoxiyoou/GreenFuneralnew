@@ -18,7 +18,7 @@
     <van-list v-model="loading" :finished="finished" :finished-text="finishedtext" @load="onLoad">
       <div class="personWraper row f-w j-b">
         <div class="item col a-c" @click="personDetail(item.id)" v-for="(item,index) in list" :key="index">
-          <img class="phone" src="./phone.png" alt="" @click.stop="callPhone(item.mobile)" >
+          <!-- <img class="phone" src="./phone.png" alt="" @click.stop="callPhone(item.mobile)" > -->
           <div class="img-wrap">
             <img class="person" :src="item.headimgurl" alt="">
           </div>

@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <div class="con col a-c">
-      <div class="top row">
-        <div class="tabDouble row j-c a-c" :class="idx==index?'hover':''" @click="son(item,idx)" v-for="(item,idx) in menu" :key="idx">{{item}}</div>
+      <div class="top row" :style="{'color':color,'border-color': color}">
+        <div class="tabDouble row j-c a-c" :class="idx==index?'hover':''" @click="son(item,idx)" v-for="(item,idx) in menu" :key="idx" :style="{'background-color':color}"> {{item}}</div>
+      </div>
+      <div class="topAb row">
+        <div class="tabDouble1 row j-c a-c" :class="idx==index?'hover2':''" @click="son(item,idx)" v-for="(item,idx) in menu" :key="idx">{{item}}</div>
       </div>
       <div class="peopleMsg">
         <div class="item  row j-b a-c">
@@ -254,19 +257,40 @@ export default {
   height: 61px;
   overflow: hidden;
   border-radius: 10px;
-  border: 2px solid #1b1b1b;
+  border: 2px solid #52aa5e;
   background-color: #ffffff;
   margin-top: 36px;
-  color: #1b1b1b;
+  color: #52aa5e;
 }
 
 .tabDouble {
   font-size: 30px;
   width: 50%;
-  height: 61px;
+  height: 100%;
+  opacity: 0;
 }
 .hover {
-  background-color: #575757;
+  background-color: #52aa5e;
+  color: #ffffff;
+  height: 100%;
+  opacity: 1;
+}
+.topAb {
+  width: 400px;
+  height: 61px;
+  overflow: hidden;
+  border-radius: 10px;
+  top: 36px;
+  position: absolute;
+  z-index: 3;
+}
+.topAb > .tabDouble1 {
+  font-size: 30px;
+  width: 50%;
+  height: 61px;
+  color: #333;
+}
+.topAb > .hover2 {
   color: #ffffff;
 }
 .peopleMsg {

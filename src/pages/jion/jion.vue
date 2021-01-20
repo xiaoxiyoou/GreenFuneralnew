@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <div class="con col a-c">
-      <div class="top row">
-        <div class="tabDouble row j-c a-c" :class="idx==index?'hover':''" @click="son(item,idx)" v-for="(item,idx) in menu" :key="idx">{{item}}</div>
+      <div class="top row"  :style="{'color':color,'border-color': color}">
+        <div class="tabDouble row j-c a-c" :class="idx==index?'hover':''" @click="son(item,idx)" v-for="(item,idx) in menu" :key="idx" :style="{'background-color':color}"></div>
+      </div>
+      <div class="topAb row">
+        <div class="tabDouble1 row j-c a-c" :class="idx==index?'hover2':''" @click="son(item,idx)" v-for="(item,idx) in menu" :key="idx">{{item}}</div>
       </div>
       <div class="peopleMsg" v-if="person">
         <div class="item  row j-b a-c">
@@ -116,10 +119,10 @@
       </van-popup>
       <upImg :showCrop="showCrop" :fixedNumber="fixedNumber" @cropShow="cropShow" @photoUp="photoUp" />
       <div class="btmCon row j-c a-c" v-if="person && showBtn" @click="toPerson">
-        <div class="btm row j-c a-c">确认提交</div>
+        <div class="btm row j-c a-c" :style="{'background-color':color}">确认提交</div>
       </div>
       <div class="btmCon row j-c a-c" v-if="mechan && showBtn" @click="toMechan">
-        <div class="btm row j-c a-c">确认提交</div>
+        <div class="btm row j-c a-c" :style="{'background-color':color}">确认提交</div>
       </div>
     </div>
   </div>
@@ -131,6 +134,7 @@ import upImg from 'components/upImg/upImg'
 export default {
   data() {
     return {
+      color: localStorage.getItem("color"),
       loading: true,
       loadTwoing: true,
       fixedNumber: [1.01, 1],
@@ -414,7 +418,7 @@ export default {
           capital: this.capital,
           personnel: this.personnel,
           Qualification: this.coQualification,
-          cateid:this.cocatidCon[this.CompanyIndex]
+          cateid: this.cocatidCon[this.CompanyIndex]
         }).then(res => {
           console.log('机构注册', res)
           if (res.code == 0) {
@@ -444,12 +448,12 @@ export default {
     // 提交机构
     toMechan() {
       this._companyapiAdd()
-     
+
     },
     // 提交人员
     toPerson() {
       this._emceeapiAdd()
- 
+
     },
 
   },
@@ -475,19 +479,40 @@ export default {
   height: 61px;
   overflow: hidden;
   border-radius: 10px;
-  border: 1px solid #5aa967;
+  border: 2px solid #52aa5e;
   background-color: #ffffff;
   margin-top: 36px;
-  color: #5aa967;
+  color: #52aa5e;
 }
 
 .tabDouble {
   font-size: 30px;
   width: 50%;
-  height: 61px;
+  height: 100%;
+  opacity: 0;
 }
 .hover {
-  background-color: #5aa967;
+  background-color: #52aa5e;
+  color: #ffffff;
+  height: 100%;
+  opacity: 1;
+}
+.topAb {
+  width: 400px;
+  height: 61px;
+  overflow: hidden;
+  border-radius: 10px;
+  top: 36px;
+  position: absolute;
+  z-index: 3;
+}
+.topAb > .tabDouble1 {
+  font-size: 30px;
+  width: 50%;
+  height: 61px;
+  color: #333;
+}
+.topAb > .hover2 {
   color: #ffffff;
 }
 .peopleMsg {

@@ -11,7 +11,7 @@
     <van-field v-model="userinfo.mobile" label="手机号码" placeholder="请输入手机号码" size="large" input-align="right" right-icon="arrow" />
     <van-field v-model="address" label="地址" placeholder="请输入地址" size="large" input-align="right" right-icon="arrow" @click="areaShowList" :readonly="true" />
 
-    <div class="btn row j-c a-c" @click="confirm(true)">确认修改</div>
+    <div class="btn row j-c a-c" @click="confirm(true)" :style="{'background-color':color}">确认修改</div>
     <upImg :showCrop="showCrop" @cropShow="cropShow" @photoUp="photoUp" />
     <!-- 城市选择 -->
     <van-popup v-model="areaShow" position="bottom">
@@ -28,6 +28,7 @@ import area from 'assets/js/area';
 export default {
   data() {
     return {
+       color:localStorage.getItem("color"),
       userinfo: '',
       showCrop: false,
       areaList: area,

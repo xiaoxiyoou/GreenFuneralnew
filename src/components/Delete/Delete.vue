@@ -4,8 +4,8 @@
     <div class="mask" @click="deleteWrapperShow(false)"></div>
     <div class="item">
       <div class="deleteCon col a-c">
-        <div class="tip">{{tip}}</div>
-        <div class="confirm col a-c j-c" @click="delcard">确认删除</div>
+        <div class="tip" :style="{'color':color}">{{tip}}</div>
+        <div class="confirm col a-c j-c" @click="delcard" :style="{'background-color':color}">确认删除</div>
         <img class="close" src="./closeTwo.png" alt="" @click="deleteWrapperShow(false)">
       </div>
     </div>
@@ -15,6 +15,12 @@
 <script>
 export default {
   name: "Delete",
+   data() {
+    return {
+      color:localStorage.getItem("color") 
+
+    }
+  },
   props: {
     deleteWrapper: Boolean,
     tip:String

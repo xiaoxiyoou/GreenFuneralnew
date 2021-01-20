@@ -10,17 +10,17 @@
           <div class="list col j-b">
             <div class="name">{{itemTwo.name}}的追思纪念堂</div>
             <div class="des">{{itemTwo.birthday|moment}}-{{itemTwo.deathdate |moment}}</div>
-            <div class="detail row">
+            <div class="detail row" :style="{'color':color}">
               <div class="item row a-c">
-                <img class="" src="./../../../assets/img/flower.png">
+                <img class="" src="./../../../assets/img/flower.png" :style="{'background-color':color}">
                 <div>{{item.flower}}</div>
               </div>
               <div class="item row a-c">
-                <img class="" src="./../../../assets/img/msg.png">
+                <img class="" src="./../../../assets/img/msg.png" :style="{'background-color':color}">
                 <div>{{item.msgcount}}</div>
               </div>
               <div class="item row a-c">
-                <img class="" src="./../../../assets/img/look.png">
+                <img class="" src="./../../../assets/img/look.png" :style="{'background-color':color}">
                 <div>{{item.look}}</div>
               </div>
             </div>
@@ -50,7 +50,8 @@ export default {
   data() {
     return {
       list: [],
-      noinfoShow: false
+      noinfoShow: false,
+       color:localStorage.getItem("color"), 
 
 
 
@@ -120,12 +121,12 @@ export default {
         font-size 28px
         color #919191
       .detail
+        color #5aa967
         .item
-          color #5aa967
           font-size 28px
-          margin-right 45px
+          margin-right 10px
           width 100px
           img
-            width 35px
-            margin-right 13px
+            width 36px
+            margin-right 10px
 </style>

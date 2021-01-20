@@ -156,8 +156,7 @@
       <div class="text row a-c j-c" v-else>您暂时未收到新的共享纪念堂申请消息</div>
       <div class="text row a-c j-c" v-if="sharemsgCount">请尽快审核</div>
       <div class="check row a-c j-c">共享后亲友也可以收到纪念日提醒功能</div>
-      <div class="btn row a-c j-c" @click="look" 
-:style="{'background-color':color}">查看</div>
+      <div class="btn row a-c j-c" @click="look" :style="{'background-color':color}">查看</div>
     </van-popup>
     <!-- 祭祀流程 -->
     <van-popup v-model="remind" class="remindWrapper col a-c">
@@ -273,10 +272,8 @@
         </div>
         <div v-else>免费</div>
         <div class="row item">
-          <div class="preview row j-c a-c" @click="preview" 
-:style="{'color':color,'border-color': color}">预览</div>
-          <div class="send row j-c a-c" @click="sendflower()" 
-:style="{'background-color':color}">送出</div>
+          <div class="preview row j-c a-c" @click="preview" :style="{'color':color,'border-color': color}">预览</div>
+          <div class="send row j-c a-c" @click="sendflower()" :style="{'background-color':color}">送出</div>
         </div>
       </div>
     </van-popup>
@@ -364,16 +361,15 @@
 </template>
 <script type="text/ecmascript-6">
 import Music from 'components/Music/Music'
-// import upImg from 'components/upImg/upImg'
 var wx = require('weixin-js-sdk')
 import { msglist, sharemsg, shareCard, msgreply, msgdel, msgadd, view, prolist, giveflower, getip, opera } from 'api/index'
 import axios from 'axios'
+import { share } from 'assets/js/shareDetail.js'
 import { Toast, ImagePreview } from 'vant'
 export default {
   data() {
     return {
-      // color: localStorage.getItem("color"),
-      color: "#0567a6",
+      color: localStorage.getItem("color"),
       title: '',
       imgbg: '',
       lifeImg: [],
@@ -589,7 +585,7 @@ export default {
 
     document.body.scrollTop = document.documentElement.scrollTop = 0
     this._prolist()
-    this._proCon(1)
+    this._proCon()
     this._view()
     // 改变消息对象索引
     window.setInterval(() => {
@@ -628,64 +624,7 @@ export default {
         closeOnPopstate: true
       });
     },
-    // 分享
 
-    wxShare(id) {
-      let link = 'http://b.fuyulove.com/wisdom/#/show?carid=' + id
-      axios.get('http://b.fuyulove.com/Action/CacheData.aspx?action=jssdk', {
-        params: {
-          url: location.href.split('#')[0],
-          t: Math.random()
-        }
-      })
-        .then(res => {
-          console.log('授权', res)
-          config(res.data.data.data)
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      const config = (data) => {
-        wx.config({
-          debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-          appId: data.appid, // 必填，公众号的唯一标识
-          timestamp: data.timestamp, // 必填，生成签名的时间戳
-          nonceStr: data.nonceStr, // 必填，生成签名的随机串
-          signature: data.signature, // 必填，签名，见附录1
-          jsApiList: [
-            'getLocation',
-            'onMenuShareAppMessage',
-            'onMenuShareTimeline',
-            'chooseImage',
-            'uploadImage',
-            'downloadImage',
-            'previewImage',
-            'startRecord',
-            'stopRecord',
-            'playVoice',
-            'uploadVoice',
-            'getLocalImgData'
-          ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-        })
-        wx.ready(() => {
-          wx.onMenuShareAppMessage({
-            title: this.title,
-            link: link,
-            desc: "您的好友邀请您来一同追思",
-            imgUrl: 'http://b.fuyulove.com/wisdom/img/share.jpg',
-          })
-        })
-        wx.onMenuShareTimeline({
-          title: this.title,
-          link: link,
-          desc: "您的好友邀请您来一同追思",
-          imgUrl: 'http://b.fuyulove.com/wisdom/img/share.jpg',
-        })
-        wx.error(function () { })
-      }
-
-
-    },
 
     // 自定义留言
     sendcustom() {
@@ -974,6 +913,7 @@ export default {
     // 获取鲜花
     _prolist() {
       prolist({
+        action: 'prolist',
         cate: 0
       }).then(res => {
         console.log('鲜花', res)
@@ -983,23 +923,18 @@ export default {
         });
       })
     },
+  
     _proCon() {
-      axios({
-        method: "post",
-        url: 'http://wx.fuyulove.com/Action/MemorApi?action=prolist&cate=1',
-        headers: {
-          'Content-type': 'application/x-www-form-urlencoded'
-        },
-      }).then((res) => {
+      prolist({
+        action: 'prolist',
+        cate: 1
+      }).then(res => {
         console.log('贡品', res)
-        this.proCon = res.data.data.list
+        this.proCon = res.data.list
         this.proproid = this.proCon.map(function (item) {
           return item.id;
         });
-
       })
-
-
     },
     // 详情
     _view() {
@@ -1029,8 +964,7 @@ export default {
           this._msglist(this.carid)
           this._getip(this.carid)
           this._sharemsg(this.carid)
-          this.wxShare(this.carid)
-
+          share(this.title, 'http://b.fuyulove.com/wisdom/#/show?carid=' + this.carid, '您的好友邀请您来一同追思', "http://b.fuyulove.com/wisdom/img/share.jpg")
         } else if (res.code == 1) {
           this.$router.push({
             path: '/delete',

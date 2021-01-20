@@ -15,16 +15,19 @@
     <van-cell title="从业年限" :value="info.workyear" size="large" />
     <van-field v-model="info.workmain" label="主要工作内容" size="large" placeholder="请输入主要工作内容" input-align="right" right-icon="arrow" />
     <van-field v-model="info.companyname" label="所在企业" size="large" placeholder="请输入所在企业" input-align="right" right-icon="arrow" />
-    <div class="tip">*修改后暂不显示在列表中，待审核通过后恢复显示。</div>
-    <div class="btn row j-c a-c" @click="confirm()">确认修改</div>
+    <div class="tip" 
+:style="{'color':color}">*修改后暂不显示在列表中，待审核通过后恢复显示。</div>
+    <div class="btn row j-c a-c" @click="confirm()" 
+:style="{'background-color':color}">确认修改</div>
     <van-popup v-model="popShow" class="pop col a-c">
-      <div class="title row j-c a-c">温馨提示</div>
+      <div class="title row j-c a-c" :style="{'background-color':color}">温馨提示</div>
       <div class="des">修改后暂不显示在列表中</div>
       <div class="des">待审核通过后恢复显示</div>
       <div class="poptip">*审核时间1~3个工作日</div>
       <div class="btm row van-hairline--top">
-        <div class="cancel row j-c a-c" @click="cancel()">取消</div>
-        <div class="confirm row j-c a-c" @click="confirmBtn()">确定修改</div>
+        <div class="cancel row j-c a-c" @click="cancel()" :style="{'color':color}">取消</div>
+        <div class="confirm row j-c a-c" @click="confirmBtn()" 
+:style="{'background-color':color}">确定修改</div>
       </div>
     </van-popup>
     <upImg :showCrop="showCrop" @cropShow="cropShow" @photoUp="photoUp" />
@@ -39,6 +42,7 @@ import { emcee, saveemcee } from 'api/index'
 export default {
   data() {
     return {
+      color:localStorage.getItem("color"), 
       info: '',
       showCrop: false,
       popShow: false,

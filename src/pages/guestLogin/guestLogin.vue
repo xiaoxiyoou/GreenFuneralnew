@@ -15,8 +15,8 @@
         <div class="text">绑定此微信</div>
       </div> -->
     </div>
-    <div class="btn row j-c a-c" @click="_LoginAdmin">登录</div>
-    <div class="tip row j-c a-c" @click="jion">还没有登录账号，点击这里去申请>>></div>
+    <div class="btn row j-c a-c" @click="_LoginAdmin" :style="{'background-color':color}">登录</div>
+    <div class="tip row j-c a-c" @click="jion" :style="{'color':color}">还没有登录账号，点击这里去申请>>></div>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -25,6 +25,7 @@ import { Toast } from 'vant';
 export default {
   data() {
     return {
+       color:localStorage.getItem("color"), 
       username: '',
       password: ''
 
